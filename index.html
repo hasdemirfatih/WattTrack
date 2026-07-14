@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://api.frankfurter.dev https://api.frankfurter.app; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://api.frankfurter.dev https://api.frankfurter.app https://nominatim.openstreetmap.org https://api.openchargemap.io; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>WattTrack</title>
 <meta name="description" content="EV şarj harcama takibi — verileriniz cihazınızda kalır.">
@@ -40,11 +40,33 @@ input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px}
 .page.active{display:block}
 
 .hero{background:var(--card);border-radius:20px;padding:20px;margin-bottom:12px;box-shadow:var(--shadow)}
-.hero .k{font-size:13px;color:var(--muted);margin-bottom:6px}
-.hero .v{font-size:34px;font-weight:700;letter-spacing:-.5px}
+.hero .k{font-size:12px;color:var(--muted);margin-bottom:4px}
+.hero .v{font-size:29px;font-weight:700;letter-spacing:-.5px}
+.hero .v.gross{color:var(--muted)}
+.hero2{display:flex;align-items:stretch;gap:14px}
+.hero2>div:not(.hero-sep){flex:1;min-width:0}
+.hero-sep{width:1px;background:var(--track);flex:none}
+.hero .delta{font-size:12px;font-weight:600;margin-top:6px;min-height:16px}
+.hero .delta.up{color:var(--red)}
+.hero .delta.down{color:var(--accent-dark)}
 .hero .sub2{font-size:13px;color:var(--muted);margin-top:6px}
 .hero .sub2 b{color:var(--text)}
-.hero .pill{display:inline-block;margin-top:10px;padding:5px 10px;border-radius:100px;background:var(--pill);color:var(--accent-text);font-size:12px;font-weight:600}
+.hero .pill{display:inline-block;margin-top:6px;padding:5px 10px;border-radius:100px;background:var(--pill);color:var(--accent-text);font-size:12px;font-weight:600}
+.donut-wrap{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);margin-bottom:14px}
+.donut-wrap svg{width:96px;height:96px;flex-shrink:0}
+.legend{flex:1;display:flex;flex-direction:column;gap:7px;font-size:12.5px}
+.legend .li{display:flex;align-items:center;gap:8px}
+.legend .dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.legend .lv{margin-left:auto;font-weight:700}
+.dstat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.dstat .tile .v{font-size:15px}
+.toplist{background:var(--card);border-radius:16px;padding:6px 16px;box-shadow:var(--shadow);margin-bottom:14px}
+.toplist .tl{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--circle);font-size:13.5px}
+.toplist .tl:last-child{border-bottom:none}
+.toplist .rank{width:20px;height:20px;border-radius:6px;background:var(--chip);color:var(--accent-text);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.toplist .tn{flex:1;font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toplist .ts{font-size:11.5px;color:var(--muted2)}
+.toplist .tv{font-weight:700;flex-shrink:0}
 .tiles{display:flex;gap:10px;margin-bottom:10px}
 .tile{flex:1;background:var(--card);border-radius:16px;padding:13px 14px;box-shadow:var(--shadow);min-width:0}
 .tile .k{font-size:11px;color:var(--muted2);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -108,6 +130,8 @@ input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px}
 .chip{padding:6px 12px;border-radius:100px;background:var(--chip);color:var(--accent-text);font-size:12px;font-weight:600}
 .row2{display:flex;gap:10px}
 .row2>div{flex:1;min-width:0}
+.calcline{display:flex;justify-content:space-between;align-items:center;margin-top:10px;background:var(--pill);border-radius:10px;padding:9px 12px;font-size:13px;color:var(--accent-text);font-weight:600}
+.calcline b{font-size:16px;color:var(--accent-dark)}
 .form-err{color:var(--red);font-size:13px;font-weight:600;display:none}
 .form-err.show{display:block}
 .save-btn{background:var(--accent);color:#fff;text-align:center;padding:15px;border-radius:14px;font-weight:600;font-size:15px;box-shadow:var(--shadow-big);width:100%}
@@ -185,8 +209,6 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
 .toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(8px);background:var(--text);color:#fff;padding:10px 18px;border-radius:100px;font-size:13.5px;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:60;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.demo-banner{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--chip);color:var(--accent-text);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;font-weight:600}
-.demo-banner button{color:var(--accent-dark);font-weight:700;font-size:13px;flex-shrink:0}
 
 @media(min-width:600px){
   body{background:#E9E6DE;display:flex;align-items:center;justify-content:center;padding:40px 20px;min-height:100vh}
@@ -206,13 +228,12 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
 <!-- ============ ANA SAYFA ============ -->
 <section class="page active" id="page-dashboard">
-  <div class="demo-banner" id="demo-banner" style="display:none">
-    <span data-i18n="demoBanner">Örnek veriler yüklü — kendi kayıtlarını ekle</span>
-    <button id="btn-clear-demo" data-i18n="clearDemo">Temizle</button>
-  </div>
   <div class="h2row" style="margin-top:0;margin-bottom:12px">
-    <div class="ob-title" style="font-size:17px">WattTrack</div>
-    <select id="d-vehsel" style="width:auto;max-width:55%;padding:7px 10px;font-size:12.5px;border-radius:10px"></select>
+    <div style="display:flex;align-items:center;gap:8px">
+      <img src="logo.png" alt="" style="height:30px;width:auto">
+      <div class="ob-title" style="font-size:17px"><span style="color:#6CB33F">Watt</span><span style="color:#1B5FAA">Track</span></div>
+    </div>
+    <select id="d-vehsel" style="width:auto;max-width:50%;padding:7px 10px;font-size:12.5px;border-radius:10px"></select>
   </div>
 
   <div class="seg mini" id="d-period" style="margin-bottom:12px">
@@ -222,10 +243,19 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   </div>
 
   <div class="hero">
-    <div class="k" id="d-period-lbl">Bu ay toplam (net ödenen)</div>
-    <div class="v" id="d-total">0</div>
-    <div class="sub2"><span data-i18n="grossTotal">İndirimsiz toplam</span>: <b id="d-gross">0</b></div>
-    <div class="pill" id="d-savings"></div>
+    <div class="hero2">
+      <div>
+        <div class="k"><span id="d-period-lbl">Bu ay</span> · <span data-i18n="netLbl">net</span></div>
+        <div class="v" id="d-total">0</div>
+        <div class="delta" id="d-delta"></div>
+      </div>
+      <div class="hero-sep"></div>
+      <div>
+        <div class="k" data-i18n="grossLbl">indirimsiz</div>
+        <div class="v gross" id="d-gross">0</div>
+        <div class="pill" id="d-savings"></div>
+      </div>
+    </div>
   </div>
 
   <div class="tiles">
@@ -255,6 +285,22 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   <div class="h2" data-i18n="firmDist">Firma dağılımı</div>
   <div class="rows" style="gap:12px;margin-bottom:20px" id="d-firms"></div>
 
+  <div class="h2" data-i18n="typeSplit">Şarj tipi dağılımı</div>
+  <div class="donut-wrap">
+    <svg viewBox="0 0 42 42" id="d-donut"></svg>
+    <div class="legend" id="d-donut-legend"></div>
+  </div>
+
+  <div class="h2" data-i18n="detailStats">Detay istatistikler</div>
+  <div class="dstat">
+    <div class="tile"><div class="k" data-i18n="avgDuration">Ort. şarj süresi</div><div class="v" id="d-dur">—</div></div>
+    <div class="tile"><div class="k" data-i18n="avgSocRange">Ort. şarj aralığı</div><div class="v" id="d-soc">—</div></div>
+  </div>
+  <div class="h2" data-i18n="topBanks">Bankalar (indirim kazancı)</div>
+  <div class="toplist" id="d-banks"></div>
+  <div class="h2" data-i18n="topLocations">En çok şarj edilen lokasyonlar</div>
+  <div class="toplist" id="d-locs" style="margin-bottom:20px"></div>
+
   <div class="h2row" style="margin-top:0">
     <div class="h2" data-i18n="recentCharges">Son şarjlar</div>
     <button class="link" id="d-viewall" data-i18n="viewAll">Tümü</button>
@@ -270,6 +316,8 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
     <select id="f-firm"></select>
     <select id="f-type"></select>
     <select id="f-veh" style="display:none"></select>
+    <select id="f-bank"></select>
+    <select id="f-loc"></select>
   </div>
   <div id="h-groups"></div>
 </section>
@@ -346,6 +394,11 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   <ul class="vlist" id="set-vehicles"></ul>
   <button class="mini-btn" id="btn-add-vehicle" data-i18n="addVehicle">+ Araç ekle</button>
   <div class="about" style="margin-top:8px" data-i18n="defaultHint">Yıldıza dokunarak varsayılan aracı seç. Araca dokunarak fotoğraf ekle.</div>
+
+  <div class="section-lbl" data-i18n="bankCountries">Banka Ülkelerim</div>
+  <div class="chips" id="set-bankc" style="margin:0 0 8px"></div>
+  <button class="mini-btn" id="btn-add-bankc" data-i18n="addCountry">+ Ülke ekle</button>
+  <div class="about" style="margin-top:8px" data-i18n="bankCountriesD">Kartların hangi ülkelerden ise seç — formdaki banka listesi bunlara göre gelir. Şarj ettiğin ülke değişse de bankaların değişmez.</div>
 
   <div class="section-lbl" data-i18n="formSection">Kayıt Formu</div>
   <div class="switchrow" style="margin-bottom:20px">
@@ -446,6 +499,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
       </div>
       <input type="text" inputmode="decimal" id="in-disc-val" placeholder="0">
       <div class="chips" id="disc-chips"></div>
+      <div class="calcline"><span data-i18n="netPaid">Ödenen (net)</span><b id="calc-net">—</b></div>
     </div>
 
     <div id="wrap-vehicle" style="display:none">
@@ -477,6 +531,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
           <button class="gps-btn" id="btn-gps" type="button" title="GPS">📍</button>
         </div>
         <datalist id="loc-list"></datalist>
+        <div class="chips" id="loc-chips"></div>
       </div>
       <div>
         <div class="lbl" data-i18n="socRange">Şarj aralığı (%)</div>

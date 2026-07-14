@@ -57,6 +57,28 @@ settings: key, value   (şimdilik: budget)
 CSV çıktısı Türkçe Excel uyumludur (UTF-8 BOM, `;` ayraç, ondalık virgül) —
 doğrudan Power BI'a da bağlanabilir.
 
+## Sürüm notu (v6 — yayın sürümü)
+
+1. Örnek veri sistemi tamamen kaldırıldı — uygulama yayına hazır, temiz açılır
+2. İNDİRİM MATEMATİĞİ DÜZELTİLDİ: girilen tutar indirim ÖNCESİ tutardır;
+   yüzde/tutar indirim bundan düşülür, formda "Ödenen (net)" canlı hesaplanır
+3. KUR HATASI DÜZELTİLDİ (çift yönlü dönüşüm): her kayıt kendi para birimini
+   korur ve kaydedildiği günün ECB kur TABLOSUNU saklar; temel para birimi
+   değişince kayıtlar kendi günün kuruyla doğru çevrilir. Tablo yoksa
+   (çevrimdışı kayıt) kayıt yanlış 1:1 çevrilmek yerine toplam dışında
+   tutulur ve çevrimiçi olununca arka planda otomatik tamamlanır
+4. Ana sayfa: logo + iki sütunlu özet (net | indirimsiz, ikisi de büyük),
+   önceki döneme göre ▲/▼ % değişim
+5. Banka Ülkelerim: bankaların şarj edilen ülkeden bağımsız; ayarlardan bir
+   veya birden çok banka ülkesi seçilir, formdaki liste bunların birleşimi
+6. GPS artık isim getiriyor: mahalle/semt adı (OpenStreetMap) + 1 km
+   içindeki şarj istasyonları çip olarak önerilir (Open Charge Map)
+7. Yeni ana sayfa bölümleri: DC/AC/Ev kWh donut grafiği, ort. şarj süresi,
+   ort. şarj aralığı, en çok kazandıran bankalar, en çok şarj edilen
+   lokasyonlar; aylık bara dokununca o yılın geçmişi açılır
+8. Geçmiş'e banka ve lokasyon filtreleri eklendi
+9. Uygulama ikonları ve ana sayfa logosu senin WattTrack logondan üretildi
+
 ## Sürüm notu (v5)
 
 1. Kompakt onboarding: ülke/para/birim/dil tek ekranda açılır listelerle

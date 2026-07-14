@@ -16,7 +16,7 @@ const MI = 1.60934;
 
 // ---------- Çeviriler ----------
 const T = {
-tr:{navHome:'Ana Sayfa',navHistory:'Geçmiş',navCompare:'Kıyasla',navSettings:'Ayarlar',
+tr:{netPaid:'Ödenen (net)',typeSplit:'Şarj tipi dağılımı (kWh)',detailStats:'Detay istatistikler',avgDuration:'Ort. şarj süresi',avgSocRange:'Ort. şarj aralığı',topBanks:'Bankalar (indirim kazancı)',topLocations:'En çok şarj edilen lokasyonlar',bankCountries:'Banka Ülkelerim',bankCountriesD:'Kartların hangi ülkelerden ise seç — formdaki banka listesi bunlara göre gelir. Şarj ettiğin ülke değişse de bankaların değişmez.',addCountry:'+ Ülke ekle',prevPeriod:'önceki döneme göre',navHome:'Ana Sayfa',navHistory:'Geçmiş',navCompare:'Kıyasla',navSettings:'Ayarlar',
 week:'Hafta',month:'Ay',year:'Yıl',
 periodWeek:'Bu hafta toplam',periodMonth:'Bu ay toplam',periodYear:'Bu yıl toplam',
 savings:'tasarruf',avgPerKwh:'kWh başı',netLbl:'net',grossLbl:'indirimsiz',
@@ -46,7 +46,7 @@ addTitle:'Yeni Şarj Kaydı',editTitle:'Kaydı Düzenle',date:'Tarih',chargeType
 company:'Ev ya da Şarj Firması',homeChip:'Ev',other:'Diğer…',kwh:'Enerji (kWh)',
 distance:'Sürülen mesafe ({u})',
 freeCharge:'Ücretsiz şarj',freeChargeD:'Kampanya, ev güneş vb. — tutar 0 kaydedilir',
-amount:'Ödenen Tutar ({s})',discountType:'İndirim Türü',amountType:'Tutar',percentType:'Yüzde (%)',
+amount:'Tutar — indirim öncesi ({s})',discountType:'İndirim Türü',amountType:'Tutar',percentType:'Yüzde (%)',
 bank:'Banka / Kampanya',vehicle:'Araç',advanced:'+ Gelişmiş',advancedHide:'− Gelişmişi gizle',
 duration:'Şarj süresi',hours:'saat',minutes:'dakika',location:'Lokasyon',
 socRange:'Şarj aralığı % (başlangıç → bitiş)',note:'Not',
@@ -56,7 +56,6 @@ rateAuto:'Kur otomatik alındı ({d})',rateNeeded:'Yurt dışı kayıt için kur
 gpsFail:'Konum alınamadı — izin verildiğinden emin ol',
 formError:'Firma, kWh ve tutar gerekli',save:'Kaydet',
 deleteAsk:'Bu kayıt silinsin mi?',deleted:'Kayıt silindi',saved:'Kayıt eklendi',updated:'Kayıt güncellendi',
-demoBanner:'Örnek veriler yüklü — kendi kayıtlarını ekle',clearDemo:'Temizle',demoCleared:'Örnekler temizlendi',
 obWelcome:'Hoş geldin!',obCountryQ:'Hangi ülkede şarj oluyorsun? Para birimi ve mesafe birimini buna göre ayarlayalım.',
 obCarQ:'Aracını seç',obCarSub:'Marka veya model yaz — yıl ve donanıma göre farklı batarya sürümlerini ayırt et.',
 searchCar:'ör. Model Y, Togg, Torres…',continue:'Devam',skip:'Atla',start:'Başla',
@@ -68,7 +67,7 @@ wiped:'Tüm veriler silindi',imported:'Yedek geri yüklendi',
 importFail:'Dosya geçerli bir WattTrack yedeği değil',importAsk:'kayıt içe aktarılacak. Birleştirilsin mi?',
 jsonDone:'JSON yedek indirildi',csvDone:'CSV indirildi',noData:'Henüz kayıt yok',sessions:'şarj'},
 
-en:{navHome:'Home',navHistory:'History',navCompare:'Compare',navSettings:'Settings',
+en:{netPaid:'Paid (net)',typeSplit:'Charge type split (kWh)',detailStats:'Detail statistics',avgDuration:'Avg charge time',avgSocRange:'Avg SoC range',topBanks:'Banks (discount savings)',topLocations:'Most charged locations',bankCountries:'My Bank Countries',bankCountriesD:'Pick the countries your cards are from — the bank list in the form follows these. Your banks don’t change when the charging country does.',addCountry:'+ Add country',prevPeriod:'vs previous period',navHome:'Home',navHistory:'History',navCompare:'Compare',navSettings:'Settings',
 week:'Week',month:'Month',year:'Year',
 periodWeek:'This week total',periodMonth:'This month total',periodYear:'This year total',
 savings:'saved',avgPerKwh:'Per kWh',netLbl:'net',grossLbl:'w/o discount',
@@ -98,7 +97,7 @@ addTitle:'New Charge',editTitle:'Edit Charge',date:'Date',chargeType:'Charge Typ
 company:'Home or Charging Company',homeChip:'Home',other:'Other…',kwh:'Energy (kWh)',
 distance:'Distance driven ({u})',
 freeCharge:'Free charge',freeChargeD:'Promo, home solar etc. — saved as 0',
-amount:'Amount Paid ({s})',discountType:'Discount Type',amountType:'Amount',percentType:'Percent (%)',
+amount:'Amount — before discount ({s})',discountType:'Discount Type',amountType:'Amount',percentType:'Percent (%)',
 bank:'Bank / Campaign',vehicle:'Vehicle',advanced:'+ Advanced',advancedHide:'− Hide advanced',
 duration:'Charge time',hours:'hours',minutes:'minutes',location:'Location',
 socRange:'SoC range % (start → end)',note:'Note',
@@ -108,7 +107,6 @@ rateAuto:'Rate fetched automatically ({d})',rateNeeded:'Rate required for a fore
 gpsFail:'Could not get location — check permission',
 formError:'Company, kWh and amount are required',save:'Save',
 deleteAsk:'Delete this record?',deleted:'Record deleted',saved:'Charge saved',updated:'Charge updated',
-demoBanner:'Sample data loaded — start adding your own',clearDemo:'Clear',demoCleared:'Samples cleared',
 obWelcome:'Welcome!',obCountryQ:'Where do you charge? We will set currency and distance unit accordingly.',
 obCarQ:'Pick your car',obCarSub:'Type a brand or model — tell versions apart by year, trim and battery.',
 searchCar:'e.g. Model Y, ID.4, Torres…',continue:'Continue',skip:'Skip',start:'Start',
@@ -120,7 +118,7 @@ wiped:'All data deleted',imported:'Backup restored',
 importFail:'Not a valid WattTrack backup',importAsk:'records will be imported. Merge?',
 jsonDone:'JSON backup downloaded',csvDone:'CSV downloaded',noData:'No records yet',sessions:'sessions'},
 
-de:{navHome:'Start',navHistory:'Verlauf',navCompare:'Vergleich',navSettings:'Einstellungen',
+de:{netPaid:'Bezahlt (netto)',typeSplit:'Ladetyp-Verteilung (kWh)',detailStats:'Detail-Statistiken',avgDuration:'Ø Ladedauer',avgSocRange:'Ø Ladebereich',topBanks:'Banken (Rabattersparnis)',topLocations:'Häufigste Ladeorte',bankCountries:'Meine Bankländer',bankCountriesD:'Wähle die Länder deiner Karten — die Bankliste im Formular folgt diesen. Deine Banken ändern sich nicht mit dem Ladeland.',addCountry:'+ Land hinzufügen',prevPeriod:'ggü. Vorperiode',navHome:'Start',navHistory:'Verlauf',navCompare:'Vergleich',navSettings:'Einstellungen',
 week:'Woche',month:'Monat',year:'Jahr',
 periodWeek:'Diese Woche gesamt',periodMonth:'Dieser Monat gesamt',periodYear:'Dieses Jahr gesamt',
 savings:'gespart',avgPerKwh:'Pro kWh',netLbl:'netto',grossLbl:'ohne Rabatt',
@@ -150,7 +148,7 @@ addTitle:'Neue Ladung',editTitle:'Ladung bearbeiten',date:'Datum',chargeType:'La
 company:'Zuhause oder Anbieter',homeChip:'Zuhause',other:'Andere…',kwh:'Energie (kWh)',
 distance:'Gefahrene Strecke ({u})',
 freeCharge:'Gratis-Ladung',freeChargeD:'Aktion, Solar usw. — als 0 gespeichert',
-amount:'Bezahlter Betrag ({s})',discountType:'Rabattart',amountType:'Betrag',percentType:'Prozent (%)',
+amount:'Betrag — vor Rabatt ({s})',discountType:'Rabattart',amountType:'Betrag',percentType:'Prozent (%)',
 bank:'Bank / Aktion',vehicle:'Fahrzeug',advanced:'+ Erweitert',advancedHide:'− Erweitert ausblenden',
 duration:'Ladedauer',hours:'Std.',minutes:'Min.',location:'Ort',
 socRange:'Ladebereich % (Start → Ende)',note:'Notiz',
@@ -160,7 +158,6 @@ rateAuto:'Kurs automatisch geladen ({d})',rateNeeded:'Kurs für Auslandseintrag 
 gpsFail:'Standort nicht verfügbar — Berechtigung prüfen',
 formError:'Anbieter, kWh und Betrag erforderlich',save:'Speichern',
 deleteAsk:'Eintrag löschen?',deleted:'Eintrag gelöscht',saved:'Ladung gespeichert',updated:'Ladung aktualisiert',
-demoBanner:'Beispieldaten geladen — eigene Einträge hinzufügen',clearDemo:'Löschen',demoCleared:'Beispiele gelöscht',
 obWelcome:'Willkommen!',obCountryQ:'Wo lädst du? Währung und Einheit werden entsprechend gesetzt.',
 obCarQ:'Wähle dein Auto',obCarSub:'Marke oder Modell eingeben — Versionen nach Jahr und Akku unterscheiden.',
 searchCar:'z.B. ID.4, EV6, Torres…',continue:'Weiter',skip:'Überspringen',start:'Los',
@@ -172,7 +169,7 @@ wiped:'Alle Daten gelöscht',imported:'Backup wiederhergestellt',
 importFail:'Kein gültiges WattTrack-Backup',importAsk:'Einträge werden importiert. Zusammenführen?',
 jsonDone:'JSON-Backup heruntergeladen',csvDone:'CSV heruntergeladen',noData:'Noch keine Einträge',sessions:'Ladungen'},
 
-fr:{navHome:'Accueil',navHistory:'Historique',navCompare:'Comparer',navSettings:'Réglages',
+fr:{netPaid:'Payé (net)',typeSplit:'Répartition par type (kWh)',detailStats:'Statistiques détaillées',avgDuration:'Durée moy.',avgSocRange:'Plage moy.',topBanks:'Banques (gains remises)',topLocations:'Lieux les plus utilisés',bankCountries:'Mes pays bancaires',bankCountriesD:'Choisissez les pays de vos cartes — la liste des banques suit ces pays. Vos banques ne changent pas avec le pays de charge.',addCountry:'+ Ajouter un pays',prevPeriod:'vs période précédente',navHome:'Accueil',navHistory:'Historique',navCompare:'Comparer',navSettings:'Réglages',
 week:'Semaine',month:'Mois',year:'Année',
 periodWeek:'Total cette semaine',periodMonth:'Total ce mois',periodYear:'Total cette année',
 savings:'économisé',avgPerKwh:'Par kWh',netLbl:'net',grossLbl:'sans remise',
@@ -202,7 +199,7 @@ addTitle:'Nouvelle charge',editTitle:'Modifier la charge',date:'Date',chargeType
 company:'Maison ou réseau',homeChip:'Maison',other:'Autre…',kwh:'Énergie (kWh)',
 distance:'Distance parcourue ({u})',
 freeCharge:'Charge gratuite',freeChargeD:'Promo, solaire… — enregistré à 0',
-amount:'Montant payé ({s})',discountType:'Type de remise',amountType:'Montant',percentType:'Pourcent (%)',
+amount:'Montant — avant remise ({s})',discountType:'Type de remise',amountType:'Montant',percentType:'Pourcent (%)',
 bank:'Banque / Promo',vehicle:'Véhicule',advanced:'+ Avancé',advancedHide:'− Masquer avancé',
 duration:'Durée de charge',hours:'heures',minutes:'minutes',location:'Lieu',
 socRange:'Plage de charge % (début → fin)',note:'Note',
@@ -212,7 +209,6 @@ rateAuto:'Taux récupéré automatiquement ({d})',rateNeeded:'Taux requis pour u
 gpsFail:'Position indisponible — vérifiez l’autorisation',
 formError:'Réseau, kWh et montant requis',save:'Enregistrer',
 deleteAsk:'Supprimer cette charge ?',deleted:'Charge supprimée',saved:'Charge enregistrée',updated:'Charge modifiée',
-demoBanner:'Données d’exemple chargées — ajoutez les vôtres',clearDemo:'Effacer',demoCleared:'Exemples effacés',
 obWelcome:'Bienvenue !',obCountryQ:'Où chargez-vous ? Devise et unité seront réglées en conséquence.',
 obCarQ:'Choisissez votre voiture',obCarSub:'Tapez une marque ou un modèle — distinguez les versions par année et batterie.',
 searchCar:'ex. Megane, ID.4, Torres…',continue:'Continuer',skip:'Passer',start:'Démarrer',
@@ -224,7 +220,7 @@ wiped:'Données supprimées',imported:'Sauvegarde restaurée',
 importFail:'Sauvegarde WattTrack invalide',importAsk:'charges à importer. Fusionner ?',
 jsonDone:'Sauvegarde JSON téléchargée',csvDone:'CSV téléchargé',noData:'Aucune charge',sessions:'charges'},
 
-es:{navHome:'Inicio',navHistory:'Historial',navCompare:'Comparar',navSettings:'Ajustes',
+es:{netPaid:'Pagado (neto)',typeSplit:'Reparto por tipo (kWh)',detailStats:'Estadísticas detalladas',avgDuration:'Duración media',avgSocRange:'Rango medio',topBanks:'Bancos (ahorro por dtos.)',topLocations:'Lugares más usados',bankCountries:'Mis países bancarios',bankCountriesD:'Elige los países de tus tarjetas — la lista de bancos del formulario los sigue. Tus bancos no cambian con el país de carga.',addCountry:'+ Añadir país',prevPeriod:'vs periodo anterior',navHome:'Inicio',navHistory:'Historial',navCompare:'Comparar',navSettings:'Ajustes',
 week:'Semana',month:'Mes',year:'Año',
 periodWeek:'Total esta semana',periodMonth:'Total este mes',periodYear:'Total este año',
 savings:'ahorrado',avgPerKwh:'Por kWh',netLbl:'neto',grossLbl:'sin dto.',
@@ -254,7 +250,7 @@ addTitle:'Nueva carga',editTitle:'Editar carga',date:'Fecha',chargeType:'Tipo de
 company:'Casa o red de carga',homeChip:'Casa',other:'Otra…',kwh:'Energía (kWh)',
 distance:'Distancia recorrida ({u})',
 freeCharge:'Carga gratis',freeChargeD:'Promo, solar… — se guarda como 0',
-amount:'Importe pagado ({s})',discountType:'Tipo de descuento',amountType:'Importe',percentType:'Porcentaje (%)',
+amount:'Importe — antes de dto. ({s})',discountType:'Tipo de descuento',amountType:'Importe',percentType:'Porcentaje (%)',
 bank:'Banco / Promo',vehicle:'Vehículo',advanced:'+ Avanzado',advancedHide:'− Ocultar avanzado',
 duration:'Duración',hours:'horas',minutes:'minutos',location:'Lugar',
 socRange:'Rango de carga % (inicio → fin)',note:'Nota',
@@ -264,7 +260,6 @@ rateAuto:'Tipo obtenido automáticamente ({d})',rateNeeded:'Tipo requerido para 
 gpsFail:'Ubicación no disponible — comprueba el permiso',
 formError:'Red, kWh e importe requeridos',save:'Guardar',
 deleteAsk:'¿Eliminar esta carga?',deleted:'Carga eliminada',saved:'Carga guardada',updated:'Carga actualizada',
-demoBanner:'Datos de ejemplo cargados — añade los tuyos',clearDemo:'Borrar',demoCleared:'Ejemplos borrados',
 obWelcome:'¡Bienvenido!',obCountryQ:'¿Dónde cargas? Ajustaremos moneda y unidad.',
 obCarQ:'Elige tu coche',obCarSub:'Escribe marca o modelo — distingue versiones por año y batería.',
 searchCar:'ej. Model 3, EV6, Torres…',continue:'Continuar',skip:'Omitir',start:'Empezar',
@@ -276,7 +271,7 @@ wiped:'Datos borrados',imported:'Copia restaurada',
 importFail:'Copia WattTrack no válida',importAsk:'cargas se importarán. ¿Combinar?',
 jsonDone:'Copia JSON descargada',csvDone:'CSV descargado',noData:'Sin cargas aún',sessions:'cargas'},
 
-it:{navHome:'Home',navHistory:'Cronologia',navCompare:'Confronta',navSettings:'Impostazioni',
+it:{netPaid:'Pagato (netto)',typeSplit:'Ripartizione per tipo (kWh)',detailStats:'Statistiche dettagliate',avgDuration:'Durata media',avgSocRange:'Intervallo medio',topBanks:'Banche (risparmio sconti)',topLocations:'Luoghi più usati',bankCountries:'I miei paesi bancari',bankCountriesD:'Scegli i paesi delle tue carte — l’elenco banche nel modulo li segue. Le tue banche non cambiano col paese di ricarica.',addCountry:'+ Aggiungi paese',prevPeriod:'vs periodo precedente',navHome:'Home',navHistory:'Cronologia',navCompare:'Confronta',navSettings:'Impostazioni',
 week:'Settimana',month:'Mese',year:'Anno',
 periodWeek:'Totale settimana',periodMonth:'Totale mese',periodYear:'Totale anno',
 savings:'risparmiato',avgPerKwh:'Per kWh',netLbl:'netto',grossLbl:'senza sconto',
@@ -306,7 +301,7 @@ addTitle:'Nuova ricarica',editTitle:'Modifica ricarica',date:'Data',chargeType:'
 company:'Casa o rete di ricarica',homeChip:'Casa',other:'Altra…',kwh:'Energia (kWh)',
 distance:'Distanza percorsa ({u})',
 freeCharge:'Ricarica gratis',freeChargeD:'Promo, solare… — salvata come 0',
-amount:'Importo pagato ({s})',discountType:'Tipo di sconto',amountType:'Importo',percentType:'Percento (%)',
+amount:'Importo — prima dello sconto ({s})',discountType:'Tipo di sconto',amountType:'Importo',percentType:'Percento (%)',
 bank:'Banca / Promo',vehicle:'Veicolo',advanced:'+ Avanzate',advancedHide:'− Nascondi avanzate',
 duration:'Durata',hours:'ore',minutes:'minuti',location:'Luogo',
 socRange:'Intervallo carica % (inizio → fine)',note:'Nota',
@@ -316,7 +311,6 @@ rateAuto:'Tasso recuperato automaticamente ({d})',rateNeeded:'Tasso richiesto pe
 gpsFail:'Posizione non disponibile — controlla i permessi',
 formError:'Rete, kWh e importo obbligatori',save:'Salva',
 deleteAsk:'Eliminare questa ricarica?',deleted:'Ricarica eliminata',saved:'Ricarica salvata',updated:'Ricarica aggiornata',
-demoBanner:'Dati di esempio caricati — aggiungi i tuoi',clearDemo:'Cancella',demoCleared:'Esempi cancellati',
 obWelcome:'Benvenuto!',obCountryQ:'Dove ricarichi? Imposteremo valuta e unità di conseguenza.',
 obCarQ:'Scegli la tua auto',obCarSub:'Scrivi marca o modello — distingui le versioni per anno e batteria.',
 searchCar:'es. 500e, Model 3, Torres…',continue:'Continua',skip:'Salta',start:'Inizia',
@@ -347,7 +341,7 @@ es:['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'], it:['Lun','Mar','Mer','Gio','V
 const S = {
   country: 'TR', currency: 'TRY', unit: 'km', lang: 'tr',
   advOpen: false, defaultVehicleId: null, onboarded: false,
-  period: 'month', cmp: null, dashVeh: '', cmpVeh: ''
+  period: 'month', cmp: null, dashVeh: '', cmpVeh: '', bankCountries: null
 };
 const $ = id => document.getElementById(id);
 const t = (key, vars) => {
@@ -385,8 +379,10 @@ function colorFor(name) {
   return AVATAR_COLORS[h % AVATAR_COLORS.length];
 }
 // indirim (tasarruf) — kayıt para biriminde
+// v6+: kayıtta hazır `indirim` alanı var (brüt − net). Eski kayıtlar için formül.
 function savingsOf(r) {
   if (r.free) return 0;
+  if (r.indirim != null) return Number(r.indirim) || 0;
   if (r.indirimTip === 'percent') {
     const v = Number(r.indirimDeger) || 0;
     return v >= 100 ? 0 : r.odenen * v / (100 - v);
@@ -394,10 +390,26 @@ function savingsOf(r) {
   if (r.indirimTip === 'amount') return Number(r.indirimDeger) || 0;
   return 0;
 }
-// temel para birimine çevrilmiş net tutar / tasarruf
-const fx = r => (r.cur && r.cur !== S.currency) ? (Number(r.rate) || 1) : 1;
-const amtB = r => (r.odenen || 0) * fx(r);
-const savB = r => savingsOf(r) * fx(r);
+// brütten neti hesapla (form ve kayıt için tek doğruluk kaynağı)
+function netFromGross(gross, type, val) {
+  const v = Number(val) || 0;
+  if (v <= 0) return gross;
+  const net = type === 'percent' ? gross * (1 - Math.min(100, v) / 100) : gross - v;
+  return Math.max(0, net);
+}
+// ---- ÇİFT YÖNLÜ KUR: kayıt kendi para birimini korur ----
+// Dönüşüm katsayısı; çevrilemiyorsa null (toplam dışı bırakılır)
+let fxPendingCount = 0;
+function convOf(r) {
+  const c = r.cur || S.currency;
+  if (c === S.currency) return 1;
+  if (r.fxTable && r.fxTable[S.currency]) return r.fxTable[S.currency];
+  if (r.rate && (r.rateBase === S.currency || !r.rateBase)) return Number(r.rate);
+  return null;
+}
+const amtB = r => { const k = convOf(r); return k == null ? 0 : (r.odenen || 0) * k; };
+const savB = r => { const k = convOf(r); return k == null ? 0 : savingsOf(r) * k; };
+const isConv = r => convOf(r) != null;
 function shortDate(iso) {
   const [, m, d] = iso.slice(0, 10).split('-').map(Number);
   return d + ' ' + MONTHS[S.lang][m - 1].slice(0, 3);
@@ -405,6 +417,14 @@ function shortDate(iso) {
 async function saveSetting(key, value) { await db.settings.put({key, value}); }
 const chargersFor = code => (CHARGERS[code] || CHARGERS_DEFAULT);
 const banksFor = code => (BANKS_BY[code] || BANKS_DEFAULT);
+// Banka listesi: kullanıcının banka ülkelerinin birleşimi (şarj ülkesinden bağımsız)
+function bankOptions() {
+  const codes = (S.bankCountries && S.bankCountries.length) ? S.bankCountries : [S.country];
+  const list = [];
+  codes.forEach(cc => banksFor(cc).forEach(b => { if (!list.includes(b)) list.push(b); }));
+  ['Visa', 'Mastercard'].forEach(b => { if (!list.includes(b)) list.push(b); });
+  return ['', ...list].map(b => `<option value="${esc(b)}">${b || '—'}</option>`).join('');
+}
 
 // ---------- araç silüetleri & özet kartı ----------
 function carSVG(body, color) {
@@ -466,6 +486,42 @@ function resizePhoto(file) {
 }
 
 // ---------- döviz kuru (frankfurter — ECB) ----------
+// Bir para biriminin o günkü TÜM kur tablosunu çek (çift yönlü dönüşüm için)
+async function fetchTable(from, date) {
+  const day = date && date < new Date().toISOString().slice(0, 10) ? date : 'latest';
+  const urls = [
+    `https://api.frankfurter.dev/v1/${day}?base=${from}`,
+    `https://api.frankfurter.app/${day}?from=${from}`
+  ];
+  for (const u of urls) {
+    try {
+      const ctrl = new AbortController();
+      const tm = setTimeout(() => ctrl.abort(), 4500);
+      const res = await fetch(u, {signal: ctrl.signal});
+      clearTimeout(tm);
+      if (!res.ok) continue;
+      const j = await res.json();
+      if (j && j.rates) { j.rates[from] = 1; return {rates: j.rates, date: j.date || day}; }
+    } catch (e) { /* sıradaki */ }
+  }
+  return null;
+}
+// Kur tablosu eksik kayıtları sessizce tamamla (oturum başına sınırlı)
+async function backfillRates() {
+  const all = await db.sessions.toArray();
+  const need = all.filter(r => r.cur && !r.fxTable);
+  const groups = {};
+  need.forEach(r => { (groups[r.cur + '|' + r.tarih.slice(0, 10)] ||= []).push(r); });
+  let calls = 0;
+  for (const key of Object.keys(groups)) {
+    if (calls >= 8) break;
+    const [cur, date] = key.split('|');
+    const got = await fetchTable(cur, date);
+    calls++;
+    if (got) for (const r of groups[key])
+      await db.sessions.update(r.id, {fxTable: got.rates, fxDate: got.date});
+  }
+}
 async function fetchRate(from, to, date) {
   const day = date && date < new Date().toISOString().slice(0, 10) ? date : 'latest';
   const urls = [
@@ -550,6 +606,20 @@ function periodFilter(all) {
     return all.filter(r => r.tarih.slice(0, 4) === String(now.getFullYear()));
   return all.filter(r => monthKey(r.tarih) === now.toISOString().slice(0, 7));
 }
+function prevPeriodFilter(all) {
+  const now = new Date();
+  if (S.period === 'week') {
+    const to = new Date(now); to.setDate(now.getDate() - 7);
+    const from = new Date(now); from.setDate(now.getDate() - 13);
+    const a = from.toISOString().slice(0, 10), b = to.toISOString().slice(0, 10);
+    return all.filter(r => { const d = r.tarih.slice(0, 10); return d >= a && d <= b; });
+  }
+  if (S.period === 'year')
+    return all.filter(r => r.tarih.slice(0, 4) === String(now.getFullYear() - 1));
+  const p = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+  const key = p.getFullYear() + '-' + String(p.getMonth() + 1).padStart(2, '0');
+  return all.filter(r => monthKey(r.tarih) === key);
+}
 const vehFilter = (list, vid) => vid ? list.filter(r => String(r.aracId) === vid) : list;
 const vehName = v => v ? (v.brand ? v.brand + ' ' + v.model : v.ad) : '';
 
@@ -570,13 +640,11 @@ async function renderDashboard() {
   }
 
   const allRaw = await db.sessions.toArray();
-  $('demo-banner').style.display = allRaw.some(r => r.demo) ? '' : 'none';
   const all = vehFilter(allRaw, S.dashVeh);
   const cur = periodFilter(all);
 
   $('d-period-lbl').textContent =
-    t(S.period === 'week' ? 'periodWeek' : S.period === 'year' ? 'periodYear' : 'periodMonth') +
-    ' · ' + t('netLbl');
+    t(S.period === 'week' ? 'periodWeek' : S.period === 'year' ? 'periodYear' : 'periodMonth');
 
   const net = cur.reduce((s, r) => s + amtB(r), 0);
   const sav = cur.reduce((s, r) => s + savB(r), 0);
@@ -590,7 +658,15 @@ async function renderDashboard() {
 
   $('d-total').textContent = money(net);
   $('d-gross').textContent = money(gross);
-  $('d-savings').textContent = '+' + money(sav) + ' ' + t('savings');
+  $('d-savings').textContent = '−' + money(sav) + ' ' + t('savings');
+  // önceki döneme göre değişim
+  const prev = prevPeriodFilter(all).reduce((s, r) => s + amtB(r), 0);
+  const dEl = $('d-delta');
+  if (prev > 0) {
+    const pct = Math.round((net - prev) / prev * 100);
+    dEl.textContent = (pct >= 0 ? '▲ +' : '▼ ') + pct + '% ' + t('prevPeriod');
+    dEl.className = 'delta ' + (pct >= 0 ? 'up' : 'down');
+  } else { dEl.textContent = ''; dEl.className = 'delta'; }
   $('d-avg').textContent = kwh ? sym() + (net / kwh).toFixed(2) : '—';
   $('d-avg-g').textContent = kwh ? sym() + (gross / kwh).toFixed(2) : '—';
   $('d-100').textContent = distKm >= 20 ? money2(netD / distKm * 100 * f) : '—';
@@ -621,16 +697,19 @@ async function renderDashboard() {
     const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
     bars.push({
       label: MONTHS[S.lang][d.getMonth()].slice(0, 3),
+      year: String(d.getFullYear()),
       sum: all.filter(r => monthKey(r.tarih) === key).reduce((s, r) => s + amtB(r), 0)
     });
   }
   const maxM = Math.max(1, ...bars.map(b => b.sum));
   $('d-months').innerHTML = bars.map(b =>
-    `<div class="mb">
+    `<div class="mb" data-y="${b.year}" style="cursor:pointer">
       <div class="amt">${b.sum ? money(b.sum) : ''}</div>
       <div class="bar" style="height:${6 + Math.round(b.sum / maxM * 66)}px"></div>
       <div class="m">${b.label}</div>
     </div>`).join('');
+  $('d-months').querySelectorAll('.mb').forEach(el =>
+    el.addEventListener('click', () => { histYear = el.dataset.y; showScreen('history'); }));
 
   // firma dağılımı
   const by = {};
@@ -653,6 +732,67 @@ async function renderDashboard() {
       <div class="track"><div class="fill" style="width:${Math.round(r.total / maxF * 100)}%"></div></div>
     </div>`).join('') : `<div class="empty">${t('noData')}</div>`;
 
+  // şarj tipi donut (kWh bazında: DC / AC / Ev)
+  const home = t('homeChip');
+  const segs = [
+    {name: 'DC', kwh: all.filter(r => r.tip === 'DC' && r.firma !== home).reduce((s, r) => s + r.kwh, 0), col: '#1C8742'},
+    {name: 'AC', kwh: all.filter(r => r.tip !== 'DC' && r.firma !== home).reduce((s, r) => s + r.kwh, 0), col: '#007DAA'},
+    {name: home, kwh: all.filter(r => r.firma === home).reduce((s, r) => s + r.kwh, 0), col: '#C87B00'}
+  ].filter(x => x.kwh > 0);
+  const tot = segs.reduce((s, x) => s + x.kwh, 0) || 1;
+  let off = 25;
+  $('d-donut').innerHTML =
+    `<circle cx="21" cy="21" r="15.915" fill="none" stroke="#E3EAE4" stroke-width="5"></circle>` +
+    segs.map(x => {
+      const p = x.kwh / tot * 100;
+      const el = `<circle cx="21" cy="21" r="15.915" fill="none" stroke="${x.col}" stroke-width="5"
+        stroke-dasharray="${p} ${100 - p}" stroke-dashoffset="${off}" stroke-linecap="butt"></circle>`;
+      off -= p;
+      return el;
+    }).join('');
+  $('d-donut-legend').innerHTML = segs.map(x =>
+    `<div class="li"><span class="dot" style="background:${x.col}"></span>${esc(x.name)}
+     <span class="lv">${Math.round(x.kwh)} kWh · %${Math.round(x.kwh / tot * 100)}</span></div>`).join('') ||
+    `<div class="li" style="color:var(--faint)">${t('noData')}</div>`;
+
+  // detay: ortalama süre & SoC aralığı
+  const durs = all.filter(r => r.dur > 0);
+  $('d-dur').textContent = durs.length
+    ? (() => { const m = Math.round(durs.reduce((s, r) => s + r.dur, 0) / durs.length);
+        return (m >= 60 ? Math.floor(m / 60) + ' ' + t('hours') + ' ' : '') + (m % 60) + ' ' + t('minutes'); })()
+    : '—';
+  const socs = all.filter(r => r.socB != null && r.socA != null);
+  $('d-soc').textContent = socs.length
+    ? '%' + Math.round(socs.reduce((s, r) => s + r.socB, 0) / socs.length) +
+      ' → %' + Math.round(socs.reduce((s, r) => s + r.socA, 0) / socs.length)
+    : '—';
+
+  // en çok kazandıran bankalar
+  const bB = {};
+  all.forEach(r => { if (r.banka) {
+    (bB[r.banka] ||= {sav: 0, n: 0});
+    bB[r.banka].sav += savB(r); bB[r.banka].n++;
+  }});
+  const banksTop = Object.entries(bB).sort((a, b) => b[1].sav - a[1].sav).slice(0, 3);
+  $('d-banks').innerHTML = banksTop.length ? banksTop.map(([name, x], i) =>
+    `<div class="tl"><span class="rank">${i + 1}</span>
+      <span class="tn">${esc(name)}<div class="ts">${x.n} ${t('sessions')}</div></span>
+      <span class="tv" style="color:var(--accent-dark)">−${money(x.sav)}</span></div>`).join('')
+    : `<div class="tl" style="color:var(--faint)">${t('noData')}</div>`;
+
+  // en çok lokasyonlar
+  const bL = {};
+  all.forEach(r => { if (r.loc) {
+    (bL[r.loc] ||= {n: 0, tl: 0});
+    bL[r.loc].n++; bL[r.loc].tl += amtB(r);
+  }});
+  const locsTop = Object.entries(bL).sort((a, b) => b[1].n - a[1].n).slice(0, 3);
+  $('d-locs').innerHTML = locsTop.length ? locsTop.map(([name, x], i) =>
+    `<div class="tl"><span class="rank">${i + 1}</span>
+      <span class="tn">${esc(name)}<div class="ts">${money(x.tl)}</div></span>
+      <span class="tv">${x.n} ${t('sessions')}</span></div>`).join('')
+    : `<div class="tl" style="color:var(--faint)">${t('noData')}</div>`;
+
   const sorted = [...all].sort((a, b) => b.tarih.localeCompare(a.tarih)).slice(0, 3);
   $('d-recent').innerHTML = sorted.length
     ? sorted.map(r => rowHTML(r, false)).join('')
@@ -661,12 +801,6 @@ async function renderDashboard() {
     el.addEventListener('click', () => openAdd(+el.dataset.id)));
 }
 $('d-viewall').addEventListener('click', () => showScreen('history'));
-$('btn-clear-demo').addEventListener('click', async () => {
-  const ids = (await db.sessions.toArray()).filter(r => r.demo).map(r => r.id);
-  await db.sessions.bulkDelete(ids);
-  toast(t('demoCleared'));
-  renderDashboard();
-});
 
 function rowHTML(r, withDelete) {
   const s = savingsOf(r);
@@ -695,9 +829,14 @@ async function renderHistory() {
 
   const years = [...new Set(sorted.map(r => r.tarih.slice(0, 4)))].sort().reverse();
   const firms = [...new Set(sorted.map(r => r.firma))].sort((a, b) => a.localeCompare(b));
+  const banks = [...new Set(sorted.map(r => r.banka).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+  const locs2 = [...new Set(sorted.map(r => r.loc).filter(Boolean))].sort((a, b) => a.localeCompare(b));
   const keep = (sel, opts) => opts.includes(sel.value) ? sel.value : '';
-  const fy = $('f-year'), ff = $('f-firm'), ft = $('f-type'), fv = $('f-veh');
-  const vy = keep(fy, years), vf = keep(ff, firms);
+  const fy = $('f-year'), ff = $('f-firm'), ft = $('f-type'), fv = $('f-veh'),
+        fb = $('f-bank'), fl = $('f-loc');
+  let vy = keep(fy, years); const vf = keep(ff, firms);
+  const vb = keep(fb, banks), vl = keep(fl, locs2);
+  if (histYear) { if (years.includes(histYear)) vy = histYear; histYear = null; }
   const vt = ['DC','AC','free'].includes(ft.value) ? ft.value : '';
   const vv = vehicles.some(v => String(v.id) === fv.value) ? fv.value : '';
   fy.innerHTML = `<option value="">${t('allYears')}</option>` + years.map(y => `<option>${y}</option>`).join('');
@@ -706,13 +845,21 @@ async function renderHistory() {
   fv.style.display = vehicles.length > 1 ? '' : 'none';
   fv.innerHTML = `<option value="">${t('allVehicles')}</option>` +
     vehicles.map(v => `<option value="${v.id}">${esc(vehName(v))}</option>`).join('');
-  fy.value = vy; ff.value = vf; ft.value = vt; fv.value = vv;
+  fb.style.display = banks.length ? '' : 'none';
+  fb.innerHTML = `<option value="">${t('bank')}: ${t('viewAll')}</option>` +
+    banks.map(x => `<option>${esc(x)}</option>`).join('');
+  fl.style.display = locs2.length ? '' : 'none';
+  fl.innerHTML = `<option value="">${t('location')}: ${t('viewAll')}</option>` +
+    locs2.map(x => `<option>${esc(x)}</option>`).join('');
+  fy.value = vy; ff.value = vf; ft.value = vt; fv.value = vv; fb.value = vb; fl.value = vl;
 
   const rows = sorted.filter(r =>
     (!vy || r.tarih.slice(0, 4) === vy) &&
     (!vf || r.firma === vf) &&
     (!vt || (vt === 'free' ? r.free : r.tip === vt)) &&
-    (!vv || String(r.aracId) === vv));
+    (!vv || String(r.aracId) === vv) &&
+    (!vb || r.banka === vb) &&
+    (!vl || r.loc === vl));
 
   const box = $('h-groups');
   if (!rows.length) { box.innerHTML = `<div class="empty">${t('noData')}</div>`; return; }
@@ -745,7 +892,8 @@ async function renderHistory() {
   box.querySelectorAll('.crow').forEach(el =>
     el.addEventListener('click', () => openAdd(+el.dataset.id)));
 }
-['f-year','f-firm','f-type','f-veh'].forEach(id => $(id).addEventListener('change', renderHistory));
+['f-year','f-firm','f-type','f-veh','f-bank','f-loc'].forEach(id => $(id).addEventListener('change', renderHistory));
+let histYear = null;
 
 // ============================================================
 // KIYASLA
@@ -849,6 +997,7 @@ async function renderSettings() {
   $('set-lang').innerHTML = Object.keys(LANG_NAMES).map(k =>
     `<option value="${k}" ${k === S.lang ? 'selected' : ''}>${LANG_NAMES[k]}</option>`).join('');
   $('set-adv').checked = !!S.advOpen;
+  renderBankCountries();
 
   const vehicles = await db.vehicles.toArray();
   $('set-vehicles').innerHTML = vehicles.length ? vehicles.map(v => {
@@ -939,6 +1088,15 @@ function renderCountryList(query) {
   box.querySelectorAll('.country-item').forEach(el =>
     el.addEventListener('click', async () => {
       const c = COUNTRIES.find(x => x[0] === el.dataset.code);
+      if (countryPickMode === 'bank') {
+        const codes = S.bankCountries && S.bankCountries.length ? [...S.bankCountries] : [S.country];
+        if (!codes.includes(c[0])) codes.push(c[0]);
+        S.bankCountries = codes;
+        await saveSetting('bankCountries', codes);
+        $('page-country').classList.remove('active');
+        renderBankCountries();
+        return;
+      }
       S.country = c[0]; S.currency = c[3]; S.unit = c[5];
       if (LANG_NAMES[c[6]]) S.lang = c[6];
       for (const [k, v] of [['country', S.country], ['currency', S.currency], ['unit', S.unit], ['lang', S.lang]])
@@ -947,11 +1105,34 @@ function renderCountryList(query) {
       applyI18n(); renderSettings();
     }));
 }
+let countryPickMode = 'region';   // 'region' | 'bank'
 $('btn-country').addEventListener('click', () => {
+  countryPickMode = 'region';
   $('country-search').value = '';
   renderCountryList('');
   $('page-country').classList.add('active');
 });
+$('btn-add-bankc').addEventListener('click', () => {
+  countryPickMode = 'bank';
+  $('country-search').value = '';
+  renderCountryList('');
+  $('page-country').classList.add('active');
+});
+function renderBankCountries() {
+  const codes = (S.bankCountries && S.bankCountries.length) ? S.bankCountries : [S.country];
+  $('set-bankc').innerHTML = codes.map(cc => {
+    const c = COUNTRIES.find(x => x[0] === cc);
+    return `<button type="button" class="chip" data-cc="${cc}">${c ? c[1] + ' ' + c[2] : cc} ×</button>`;
+  }).join('');
+  $('set-bankc').querySelectorAll('button').forEach(b =>
+    b.addEventListener('click', async () => {
+      let codes2 = (S.bankCountries || [S.country]).filter(x => x !== b.dataset.cc);
+      if (!codes2.length) codes2 = [S.country];
+      S.bankCountries = codes2;
+      await saveSetting('bankCountries', codes2);
+      renderBankCountries();
+    }));
+}
 $('btn-close-country').addEventListener('click', () => $('page-country').classList.remove('active'));
 $('country-search').addEventListener('input', e => renderCountryList(e.target.value));
 
@@ -1067,18 +1248,70 @@ $('in-tip').addEventListener('click', e => {
 $('in-disc-type').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   $('in-disc-type').querySelectorAll('button').forEach(x => x.classList.toggle('sel', x === b));
+  updateNetLine();
 });
+function updateNetLine() {
+  const g = pf($('in-amount').value);
+  const code = $('in-country').value;
+  const c = COUNTRIES.find(x => x[0] === code);
+  if (isNaN(g) || g < 0) { $('calc-net').textContent = '—'; return; }
+  const type = $('in-disc-type').querySelector('.sel').dataset.v;
+  const net = netFromGross(g, type, pf($('in-disc-val').value) || 0);
+  $('calc-net').textContent = symOf(c ? c[3] : S.currency) +
+    net.toLocaleString('tr-TR', {maximumFractionDigits: 2});
+}
+['in-amount', 'in-disc-val'].forEach(id => $(id).addEventListener('input', updateNetLine));
 $('in-firm').addEventListener('change', () => {
   $('in-firm-other').style.display = $('in-firm').value === '__other' ? '' : 'none';
 });
 $('in-country').addEventListener('change', () => formCountryChanged());
 $('btn-gps').addEventListener('click', () => {
   if (!navigator.geolocation) return toast(t('gpsFail'));
-  navigator.geolocation.getCurrentPosition(
-    p => { $('in-loc').value = p.coords.latitude.toFixed(5) + ', ' + p.coords.longitude.toFixed(5); },
-    () => toast(t('gpsFail')),
-    {timeout: 8000, maximumAge: 60000});
+  $('btn-gps').textContent = '…';
+  navigator.geolocation.getCurrentPosition(async p => {
+    const {latitude: lat, longitude: lon} = p.coords;
+    // 1) semt/mahalle adı (OpenStreetMap Nominatim)
+    const place = await reverseGeo(lat, lon);
+    $('in-loc').value = place || (lat.toFixed(5) + ', ' + lon.toFixed(5));
+    // 2) yakındaki şarj istasyonları (Open Charge Map) — çip olarak öner
+    const st = await nearbyStations(lat, lon);
+    $('loc-chips').innerHTML = st.map(s =>
+      `<button type="button" class="chip" data-n="${esc(s)}">${esc(s)}</button>`).join('');
+    $('loc-chips').querySelectorAll('button').forEach(b =>
+      b.addEventListener('click', () => { $('in-loc').value = b.dataset.n; }));
+    $('btn-gps').textContent = '📍';
+  }, () => { toast(t('gpsFail')); $('btn-gps').textContent = '📍'; },
+  {timeout: 8000, maximumAge: 60000});
 });
+async function reverseGeo(lat, lon) {
+  try {
+    const ctrl = new AbortController();
+    const tm = setTimeout(() => ctrl.abort(), 5000);
+    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2&zoom=16&accept-language=${S.lang}`,
+      {signal: ctrl.signal, headers: {'Accept': 'application/json'}});
+    clearTimeout(tm);
+    if (!res.ok) return null;
+    const a = (await res.json()).address || {};
+    const narrow = a.neighbourhood || a.suburb || a.quarter || a.village || a.hamlet;
+    const town = a.town || a.city || a.county || '';
+    return narrow ? (narrow + (town ? ', ' + town : '')) : (town || null);
+  } catch { return null; }
+}
+async function nearbyStations(lat, lon) {
+  try {
+    const ctrl = new AbortController();
+    const tm = setTimeout(() => ctrl.abort(), 5000);
+    const res = await fetch(`https://api.openchargemap.io/v3/poi/?output=json&latitude=${lat}&longitude=${lon}&distance=1&distanceunit=km&maxresults=4&compact=true&verbose=false`,
+      {signal: ctrl.signal});
+    clearTimeout(tm);
+    if (!res.ok) return [];
+    const j = await res.json();
+    return (j || []).map(p => {
+      const op = p.OperatorInfo && p.OperatorInfo.Title ? p.OperatorInfo.Title + ' — ' : '';
+      return (op + (p.AddressInfo?.Title || '')).slice(0, 60);
+    }).filter(Boolean);
+  } catch { return []; }
+}
 
 function fillFirmSelect(code, current, usedCounts) {
   const used = Object.entries(usedCounts)
@@ -1111,9 +1344,7 @@ async function formCountryChanged(keepRate) {
     ? $('in-firm-other').value.trim()
     : $('in-firm').value;
   fillFirmSelect(code, curFirm && curFirm !== t('other') ? curFirm : '', counts);
-  $('in-bank').innerHTML = ['', ...banksFor(code), 'Visa', 'Mastercard']
-    .filter((v, i, a) => a.indexOf(v) === i)
-    .map(b => `<option value="${esc(b)}">${b || '—'}</option>`).join('');
+  $('in-bank').innerHTML = bankOptions();
   $('in-amount-lbl').textContent = t('amount', {s: symOf(c[3])});
 
   // döviz kuru alanı
@@ -1153,8 +1384,10 @@ async function openAdd(id) {
   $('in-kwh-dec').value = kwh === '' ? '' : Math.round((kwh - Math.floor(kwh)) * 100);
   $('in-dist').value = r?.mesafeKm ? Math.round(distDisp(r.mesafeKm)) : '';
   $('in-free').checked = !!r?.free;
-  $('in-amount').value = r && !r.free && r.odenen != null
-    ? String(r.odenen).replace('.', ',') : '';
+  const grossVal = r && !r.free
+    ? (r.tutar != null ? r.tutar : (r.odenen || 0) + savingsOf(r)) : null;
+  $('in-amount').value = grossVal != null && !isNaN(grossVal)
+    ? String(Math.round(grossVal * 100) / 100).replace('.', ',') : '';
   const dt = r?.indirimTip === 'percent' ? 'percent' : 'amount';
   $('in-disc-type').querySelectorAll('button').forEach(b =>
     b.classList.toggle('sel', b.dataset.v === dt));
@@ -1175,9 +1408,7 @@ async function openAdd(id) {
     const counts = {};
     all.forEach(x => { if ((x.ulke || S.country) === selCode) counts[x.firma] = (counts[x.firma] || 0) + 1; });
     fillFirmSelect(selCode, r?.firma || '', counts);
-    $('in-bank').innerHTML = ['', ...banksFor(selCode), 'Visa', 'Mastercard']
-      .filter((v, i, a) => a.indexOf(v) === i)
-      .map(b => `<option value="${esc(b)}">${b || '—'}</option>`).join('');
+    $('in-bank').innerHTML = bankOptions();
     $('in-bank').value = r?.banka || '';
     const c = COUNTRIES.find(x => x[0] === selCode);
     $('in-amount-lbl').textContent = t('amount', {s: symOf(c[3])});
@@ -1250,6 +1481,9 @@ $('btn-save').addEventListener('click', async () => {
   }
   const distIn = pf($('in-dist').value) || 0;
   const discVal = free ? 0 : (pf($('in-disc-val').value) || 0);
+  const discType = $('in-disc-type').querySelector('.sel').dataset.v;
+  const gross = free ? 0 : Math.round(amount * 100) / 100;
+  const net = free ? 0 : Math.round(netFromGross(gross, discType, discVal) * 100) / 100;
   let a = parseInt($('in-socb').value), b = parseInt($('in-soca').value);
   if (!isNaN(a) && !isNaN(b) && a > b) [a, b] = [b, a];
   const durH = parseInt($('in-dur-h').value) || 0;
@@ -1258,9 +1492,11 @@ $('btn-save').addEventListener('click', async () => {
     tarih: $('in-date').value + 'T12:00',
     tip: $('in-tip').querySelector('.sel').dataset.v,
     firma, kwh: Math.round(kwh * 100) / 100,
-    odenen: free ? 0 : Math.round(amount * 100) / 100,
+    tutar: gross,
+    odenen: net,
+    indirim: Math.round((gross - net) * 100) / 100,
     free,
-    indirimTip: discVal > 0 ? $('in-disc-type').querySelector('.sel').dataset.v : 'none',
+    indirimTip: discVal > 0 ? discType : 'none',
     indirimDeger: discVal,
     banka: discVal > 0 || $('in-bank').value ? $('in-bank').value : '',
     mesafeKm: distIn ? Math.round((S.unit === 'mi' ? distIn * MI : distIn) * 10) / 10 : null,
@@ -1269,18 +1505,26 @@ $('btn-save').addEventListener('click', async () => {
     socB: isNaN(a) ? null : a, socA: isNaN(b) ? null : b,
     ulke: code, cur: c[3],
     rate: foreign ? rate : null,
+    rateBase: foreign ? S.currency : null,
     aracId: parseInt($('in-vehicle').value) || null,
     not: $('in-note').value.trim()
   };
+  let recId;
   if (editingId) {
     await db.sessions.update(editingId, rec);
+    recId = editingId;
     toast(t('updated'));
   } else {
-    await db.sessions.add(rec);
+    recId = await db.sessions.add(rec);
     toast(t('saved'));
   }
   $('page-add').classList.remove('active');
   showScreen(screen);
+  // kur tablosunu sessizce ekle (çift yönlü dönüşüm için — yerli kayıt dahil)
+  fetchTable(c[3], rec.tarih.slice(0, 10)).then(got => {
+    if (got) db.sessions.update(recId, {fxTable: got.rates, fxDate: got.date})
+      .then(() => { if (screen === 'dashboard') renderDashboard(); });
+  });
 });
 
 // ============================================================
@@ -1339,36 +1583,15 @@ async function finishOnboarding(withCar) {
   for (const [k, v] of [['country', S.country], ['currency', S.currency],
     ['unit', S.unit], ['lang', S.lang], ['onboarded', true]])
     await saveSetting(k, v);
+  if (!S.bankCountries) { S.bankCountries = [S.country]; await saveSetting('bankCountries', S.bankCountries); }
   if (withCar && obEv) {
     const id = await db.vehicles.add(vehicleRec(obEv));
     S.defaultVehicleId = id;
     await saveSetting('defaultVehicleId', id);
   }
-  await seedDemo();
   $('ob').classList.remove('active');
   applyI18n();
   renderDashboard();
-}
-
-// ============================================================
-// ÖRNEK VERİLER
-// ============================================================
-async function seedDemo() {
-  if ((await db.settings.get('seeded')) || await db.sessions.count() > 0) return;
-  if (S.country !== 'TR') { await saveSetting('seeded', 1); return; }
-  const d = off => {
-    const x = new Date(); x.setDate(x.getDate() - off);
-    return x.toISOString().slice(0, 10) + 'T12:00';
-  };
-  await db.sessions.bulkAdd([
-    {tarih:d(1), tip:'DC', firma:'Trugo', kwh:42, odenen:215, free:false, indirimTip:'amount', indirimDeger:15, banka:'Garanti BBVA', mesafeKm:270, socB:15, socA:80, ulke:'TR', cur:'TRY', demo:true},
-    {tarih:d(5), tip:'DC', firma:'Eşarj', kwh:38, odenen:198, free:false, indirimTip:'none', indirimDeger:0, mesafeKm:240, socB:20, socA:75, ulke:'TR', cur:'TRY', demo:true},
-    {tarih:d(9), tip:'DC', firma:'ZES', kwh:45, odenen:230, free:false, indirimTip:'percent', indirimDeger:8, banka:'İş Bankası', mesafeKm:300, socB:22, socA:90, ulke:'TR', cur:'TRY', demo:true},
-    {tarih:d(22), tip:'AC', firma:'Trugo', kwh:36, odenen:180, free:false, indirimTip:'none', indirimDeger:0, mesafeKm:230, socB:25, socA:80, ulke:'TR', cur:'TRY', demo:true},
-    {tarih:d(27), tip:'DC', firma:'Sharz.net', kwh:30, odenen:150, free:false, indirimTip:'percent', indirimDeger:5, banka:'Akbank', mesafeKm:190, socB:15, socA:70, ulke:'TR', cur:'TRY', demo:true},
-    {tarih:d(48), tip:'AC', firma:'Ev', kwh:40, odenen:0, free:true, indirimTip:'none', indirimDeger:0, mesafeKm:260, socB:10, socA:85, ulke:'TR', cur:'TRY', demo:true},
-  ]);
-  await saveSetting('seeded', 1);
 }
 
 // ============================================================
@@ -1450,18 +1673,15 @@ $('btn-wipe').addEventListener('click', async () => {
 // BAŞLANGIÇ
 // ============================================================
 (async function init() {
-  for (const key of ['country','currency','unit','lang','advOpen','defaultVehicleId','onboarded','cmp']) {
+  for (const key of ['country','currency','unit','lang','advOpen','defaultVehicleId','onboarded','cmp','bankCountries']) {
     const row = await db.settings.get(key);
     if (row) S[key] = row.value;
   }
   initOnboarding();
   applyI18n();
-  if (!S.onboarded) {
-    $('ob').classList.add('active');
-  } else {
-    await seedDemo();
-  }
+  if (!S.onboarded) $('ob').classList.add('active');
   renderDashboard();
+  backfillRates().then(() => { if (screen === 'dashboard') renderDashboard(); });
 })();
 
 if ('serviceWorker' in navigator) {

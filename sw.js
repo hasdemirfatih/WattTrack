@@ -1,5 +1,5 @@
 /* WattTrack service worker — çevrimdışı çalışma */
-const CACHE = 'watttrack-v5';
+const CACHE = 'watttrack-v6';
 const ASSETS = [
   './',
   './index.html',
@@ -8,7 +8,8 @@ const ASSETS = [
   './icon-192.png',
   './icon-512.png',
   './dexie.min.js',
-  './evdata.js'
+  './evdata.js',
+  './logo.png'
 ];
 
 self.addEventListener('install', e => {
