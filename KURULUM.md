@@ -57,6 +57,28 @@ settings: key, value   (şimdilik: budget)
 CSV çıktısı Türkçe Excel uyumludur (UTF-8 BOM, `;` ayraç, ondalık virgül) —
 doğrudan Power BI'a da bağlanabilir.
 
+## Sürüm notu (v5)
+
+1. Kompakt onboarding: ülke/para/birim/dil tek ekranda açılır listelerle
+2. EV veritabanı ~140 sürüme çıktı (KGM Torres EVX 73.4 & 80.6, Korando
+   e-Motion, Musso EV; 2025+ Tesla Standard/Premium/Performance serisi;
+   Inster, EV4/EV5, Elroq, ID.Buzz, Grande Panda, Xpeng, Leapmotor vb.)
+   — teknik değerler Oca 2026 üretici verilerinden derlendi (yaklaşıktır)
+3. Araca kendi fotoğrafını ekleme (galeri/kamera → cihazda saklanır);
+   ayarlarda araca dokunarak da eklenir/değiştirilir
+4. Net (ödenen) ve indirimsiz (liste) istatistikler ayrı ayrı: toplamlar,
+   kWh başı, 100 km — ana sayfada ve Kıyasla'da
+5. Ana sayfa / Geçmiş / Kıyasla ekranlarına araç filtresi (2+ araçta)
+6. Form: ülke bazlı firma listesi (16 TR + 20+ ülke; en çok kullandıkların
+   üstte), bölünmüş kWh girişi (tam,ondalık), virgüllü tutar, banka
+   Gelişmiş'e taşındı ve ülkeye göre listeleniyor, saat+dakika süre,
+   rakamla SoC aralığı, lokasyon önerileri + GPS (📍) butonu
+7. Yurt dışı kayıt: ülke seçilince o günün ECB kuru otomatik çekilir
+   (frankfurter API — yalnız para birimi kodları gider), bulunamazsa elle
+   girilir; istatistikler temel para birimine çevrilerek hesaplanır
+8. Güvenlik: CSP başlığı, CSV formül-enjeksiyon koruması, tüm kullanıcı
+   girdilerinde HTML kaçışı (XSS koruması)
+
 ## Sürüm notu (v4 — büyük özellik sürümü)
 
 1. İlk açılış sihirbazı: ülke (Avrupa + ABD + Kanada, aranabilir bayraklı liste),

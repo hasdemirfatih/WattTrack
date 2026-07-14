@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://api.frankfurter.dev https://api.frankfurter.app; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>WattTrack</title>
 <meta name="description" content="EV şarj harcama takibi — verileriniz cihazınızda kalır.">
@@ -22,19 +23,14 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{
-  background:var(--bg);color:var(--text);
+body{background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
-  font-size:15px;line-height:1.45;min-height:100vh;
-}
+  font-size:15px;line-height:1.45;min-height:100vh}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-input,select{
-  font-family:inherit;font-size:15px;color:var(--text);
+input,select{font-family:inherit;font-size:15px;color:var(--text);
   width:100%;padding:12px 14px;border-radius:12px;
-  border:1px solid var(--border);background:var(--card);
-}
+  border:1px solid var(--border);background:var(--card)}
 input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px}
-input[type=range]{padding:0;border:none;background:transparent;accent-color:var(--accent);height:28px}
 .lbl{font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:600}
 .section-lbl{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
 
@@ -43,10 +39,11 @@ input[type=range]{padding:0;border:none;background:transparent;accent-color:var(
 .page{display:none}
 .page.active{display:block}
 
-/* ---------- ortak kart / satır ---------- */
 .hero{background:var(--card);border-radius:20px;padding:20px;margin-bottom:12px;box-shadow:var(--shadow)}
 .hero .k{font-size:13px;color:var(--muted);margin-bottom:6px}
-.hero .v{font-size:36px;font-weight:700;letter-spacing:-.5px}
+.hero .v{font-size:34px;font-weight:700;letter-spacing:-.5px}
+.hero .sub2{font-size:13px;color:var(--muted);margin-top:6px}
+.hero .sub2 b{color:var(--text)}
 .hero .pill{display:inline-block;margin-top:10px;padding:5px 10px;border-radius:100px;background:var(--pill);color:var(--accent-text);font-size:12px;font-weight:600}
 .tiles{display:flex;gap:10px;margin-bottom:10px}
 .tile{flex:1;background:var(--card);border-radius:16px;padding:13px 14px;box-shadow:var(--shadow);min-width:0}
@@ -73,13 +70,11 @@ input[type=range]{padding:0;border:none;background:transparent;accent-color:var(
 .month-group{margin-bottom:20px}
 .empty{text-align:center;color:var(--faint);font-size:14px;padding:36px 0}
 
-/* ---------- segment ---------- */
 .seg{display:flex;gap:8px}
 .seg button{flex:1;text-align:center;padding:10px 6px;border-radius:10px;font-size:13px;font-weight:600;background:var(--card);color:var(--muted);border:1px solid var(--border)}
 .seg button.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
 .seg.mini button{padding:7px 4px;font-size:12px;border-radius:9px}
 
-/* ---------- grafikler ---------- */
 .weekbars{display:flex;align-items:flex-end;gap:8px;height:64px;margin-bottom:6px}
 .weekbars>div{flex:1;background:rgba(28,135,66,.35);border-radius:4px;min-height:4px}
 .weekdays{display:flex;gap:8px;margin-bottom:20px}
@@ -90,7 +85,6 @@ input[type=range]{padding:0;border:none;background:transparent;accent-color:var(
 .mb .bar{width:100%;background:var(--accent);border-radius:5px 5px 0 0}
 .mb .m{font-size:10.5px;color:var(--muted2)}
 
-/* ---------- firma dağılımı ---------- */
 .cmp{background:var(--card);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
 .cmp-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .cmp-head .avatar{width:30px;height:30px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:13px}
@@ -101,11 +95,9 @@ input[type=range]{padding:0;border:none;background:transparent;accent-color:var(
 .cmp .track{height:6px;background:var(--track);border-radius:100px;overflow:hidden}
 .cmp .fill{height:100%;background:var(--accent);border-radius:100px}
 
-/* ---------- filtreler ---------- */
-.filters{display:flex;gap:8px;margin-bottom:16px}
-.filters select{flex:1;padding:9px 10px;font-size:13px;border-radius:10px}
+.filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.filters select{flex:1;min-width:96px;padding:9px 10px;font-size:13px;border-radius:10px}
 
-/* ---------- overlay sayfalar ---------- */
 .overlay{position:fixed;inset:0;z-index:30;background:var(--bg);display:none;flex-direction:column;max-width:520px;margin:0 auto}
 .overlay.active{display:flex}
 .ov-head{display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top)) 20px 6px;flex-shrink:0}
@@ -132,11 +124,14 @@ input[type=range]{padding:0;border:none;background:transparent;accent-color:var(
 .sw i::after{content:"";position:absolute;left:3px;top:3px;width:21px;height:21px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .sw input:checked+i{background:var(--accent)}
 .sw input:checked+i::after{transform:translateX(19px)}
-.socbar{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600}
-.socbar input{flex:1}
-.socval{min-width:68px;text-align:center;background:var(--chip);color:var(--accent-text);border-radius:8px;padding:5px 0;font-size:13px;flex-shrink:0}
 
-/* ---------- onboarding & seçiciler ---------- */
+.kwh-split{display:flex;align-items:center;gap:6px}
+.kwh-split input{text-align:center}
+.kwh-split .comma{font-size:22px;font-weight:700;color:var(--muted)}
+.loc-row{display:flex;gap:8px}
+.loc-row input{flex:1}
+.gps-btn{flex-shrink:0;width:48px;border-radius:12px;background:var(--chip);color:var(--accent-text);font-size:18px;border:1px solid var(--border)}
+
 .ob-progress{display:flex;gap:6px;padding:0 20px;margin-top:4px}
 .ob-progress div{flex:1;height:4px;border-radius:4px;background:var(--track)}
 .ob-progress div.on{background:var(--accent)}
@@ -153,20 +148,22 @@ input[type=range]{padding:0;border:none;background:transparent;accent-color:var(
 .ev-item .n{font-size:14px;font-weight:600}
 .ev-item .d{font-size:12px;color:var(--muted2)}
 .ev-summary{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
-.ev-summary svg{width:100%;height:84px;display:block;margin-bottom:6px}
+.ev-summary svg,.ev-summary img.carphoto{width:100%;height:110px;display:block;margin-bottom:6px;object-fit:cover;border-radius:12px}
+.ev-summary svg{height:84px;object-fit:unset}
 .ev-summary .name{font-size:16px;font-weight:700;text-align:center;margin-bottom:2px}
 .ev-summary .trim{font-size:12.5px;color:var(--muted2);text-align:center;margin-bottom:12px}
 .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .spec{background:var(--bg);border-radius:10px;padding:9px 11px}
 .spec .k{font-size:10.5px;color:var(--muted2)}
 .spec .v{font-size:13.5px;font-weight:700}
+.photo-btn{margin-top:10px;width:100%;background:var(--chip);color:var(--accent-text);font-weight:600;border-radius:10px;padding:10px;font-size:13px}
 
-/* ---------- ayarlar ---------- */
 .setting-btn{display:block;width:100%;text-align:left;background:var(--card);border-radius:12px;padding:13px 14px;font-size:14px;font-weight:600;box-shadow:var(--shadow);margin-bottom:10px}
 .setting-btn.danger{color:var(--red)}
 .about{font-size:13px;line-height:1.5;color:var(--muted);margin-bottom:20px}
 .vlist{list-style:none;margin-bottom:10px}
 .vlist li{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:12px;padding:11px 14px;box-shadow:var(--shadow);margin-bottom:8px;font-size:14px}
+.vlist .vthumb{width:44px;height:32px;border-radius:8px;object-fit:cover;flex-shrink:0}
 .vlist .vn{flex:1;font-weight:600;min-width:0}
 .vlist .vd{font-size:11px;color:var(--muted2);font-weight:400}
 .vlist .star{font-size:17px;color:var(--faint)}
@@ -174,22 +171,16 @@ input[type=range]{padding:0;border:none;background:transparent;accent-color:var(
 .vlist .rm{color:var(--red);font-size:15px}
 .mini-btn{background:var(--chip);color:var(--accent-text);font-weight:600;border-radius:10px;padding:9px 14px;font-size:13px}
 
-/* ---------- alt menü: ortada büyük + ---------- */
-nav{
-  position:fixed;bottom:0;left:0;right:0;z-index:10;max-width:520px;margin:0 auto;
+nav{position:fixed;bottom:0;left:0;right:0;z-index:10;max-width:520px;margin:0 auto;
   display:flex;justify-content:space-around;align-items:center;
   padding:8px 0 calc(12px + env(safe-area-inset-bottom));
-  background:var(--card);border-top:1px solid #DCDFDC;
-}
+  background:var(--card);border-top:1px solid #DCDFDC}
 nav button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:500;color:var(--faint);flex:1}
 nav button svg{width:22px;height:22px;stroke-width:1.8;stroke:currentColor;fill:none}
 nav button.sel{color:var(--accent)}
-nav .plus>div{
-  width:58px;height:58px;border-radius:50%;background:var(--accent);
+nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--accent);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 20px rgba(0,104,42,.35);margin-top:-30px;
-  border:4px solid var(--bg);
-}
+  box-shadow:0 8px 20px rgba(0,104,42,.35);margin-top:-30px;border:4px solid var(--bg)}
 nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap:round}
 
 .toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(8px);background:var(--text);color:#fff;padding:10px 18px;border-radius:100px;font-size:13.5px;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:60;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
@@ -197,7 +188,6 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 .demo-banner{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--chip);color:var(--accent-text);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;font-weight:600}
 .demo-banner button{color:var(--accent-dark);font-weight:700;font-size:13px;flex-shrink:0}
 
-/* ---------- masaüstü telefon çerçevesi ---------- */
 @media(min-width:600px){
   body{background:#E9E6DE;display:flex;align-items:center;justify-content:center;padding:40px 20px;min-height:100vh}
   .app{width:402px;height:844px;min-height:844px;flex:none;background:var(--bg);border-radius:44px;overflow:hidden;position:relative;
@@ -220,9 +210,9 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
     <span data-i18n="demoBanner">Örnek veriler yüklü — kendi kayıtlarını ekle</span>
     <button id="btn-clear-demo" data-i18n="clearDemo">Temizle</button>
   </div>
-  <div class="h2row" style="margin-top:0;margin-bottom:14px">
+  <div class="h2row" style="margin-top:0;margin-bottom:12px">
     <div class="ob-title" style="font-size:17px">WattTrack</div>
-    <div style="font-size:12.5px;color:var(--muted);text-align:right" id="d-vehicle"></div>
+    <select id="d-vehsel" style="width:auto;max-width:55%;padding:7px 10px;font-size:12.5px;border-radius:10px"></select>
   </div>
 
   <div class="seg mini" id="d-period" style="margin-bottom:12px">
@@ -232,14 +222,19 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   </div>
 
   <div class="hero">
-    <div class="k" id="d-period-lbl">Bu ay toplam</div>
+    <div class="k" id="d-period-lbl">Bu ay toplam (net ödenen)</div>
     <div class="v" id="d-total">0</div>
+    <div class="sub2"><span data-i18n="grossTotal">İndirimsiz toplam</span>: <b id="d-gross">0</b></div>
     <div class="pill" id="d-savings"></div>
   </div>
 
   <div class="tiles">
-    <div class="tile"><div class="k" data-i18n="avgPerKwh">kWh başı ort.</div><div class="v" id="d-avg">—</div></div>
-    <div class="tile"><div class="k" id="d-100-lbl">100 km maliyet</div><div class="v" id="d-100">—</div></div>
+    <div class="tile"><div class="k"><span data-i18n="avgPerKwh">kWh başı</span> · <span data-i18n="netLbl">net</span></div><div class="v" id="d-avg">—</div></div>
+    <div class="tile"><div class="k"><span data-i18n="avgPerKwh">kWh başı</span> · <span data-i18n="grossLbl">indirimsiz</span></div><div class="v" id="d-avg-g">—</div></div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="k"><span id="d-100-lbl">100 km</span> · <span data-i18n="netLbl">net</span></div><div class="v" id="d-100">—</div></div>
+    <div class="tile"><div class="k"><span id="d-100-lbl2">100 km</span> · <span data-i18n="grossLbl">indirimsiz</span></div><div class="v" id="d-100-g">—</div></div>
   </div>
   <div class="tiles">
     <div class="tile"><div class="k" data-i18n="totalKwhP">Enerji (kWh)</div><div class="v" id="d-kwh">0</div></div>
@@ -274,6 +269,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
     <select id="f-year"></select>
     <select id="f-firm"></select>
     <select id="f-type"></select>
+    <select id="f-veh" style="display:none"></select>
   </div>
   <div id="h-groups"></div>
 </section>
@@ -283,21 +279,26 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   <div class="page-title" data-i18n="compareTitle">Yakıtlı Araçla Kıyasla</div>
 
   <div class="card">
+    <div id="wrap-c-veh" style="display:none;margin-bottom:14px">
+      <div class="lbl" data-i18n="vehicle">Araç</div>
+      <select id="c-vehsel"></select>
+    </div>
     <div class="lbl" data-i18n="fuelType">Diğer aracın yakıt tipi</div>
-    <div class="seg mini" id="c-fuel" style="margin-bottom:14px">
+    <div class="seg mini" id="c-fuel" style="margin-bottom:6px">
       <button data-v="petrol" class="sel" data-i18n="petrol">Benzin</button>
       <button data-v="diesel" data-i18n="diesel">Dizel</button>
       <button data-v="hybrid" data-i18n="hybrid">Hibrit</button>
       <button data-v="lpg">LPG</button>
     </div>
-    <div class="row2" style="margin-bottom:14px">
+    <div class="about" id="c-hybrid-note" style="display:none;margin-bottom:10px;font-size:12px" data-i18n="hybridNote">Şarj edilmeyen (tam) hibritler de litre/100km ile ölçülür — sadece tüketimi düşüktür (~4-5 lt). Şarjlı hibrit (PHEV) için ortalama karma tüketimi gir.</div>
+    <div class="row2" style="margin-bottom:14px;margin-top:8px">
       <div>
         <div class="lbl" id="c-price-lbl">Yakıt fiyatı (lt)</div>
-        <input type="number" id="c-price" inputmode="decimal" step="0.01" min="0" placeholder="47.50">
+        <input type="text" inputmode="decimal" id="c-price" placeholder="47,50">
       </div>
       <div>
         <div class="lbl" id="c-cons-lbl">Tüketim (lt/100km)</div>
-        <input type="number" id="c-cons" inputmode="decimal" step="0.1" min="0" placeholder="6.5">
+        <input type="text" inputmode="decimal" id="c-cons" placeholder="6,5">
       </div>
     </div>
     <button class="save-btn" id="c-calc" style="box-shadow:none" data-i18n="calc">Kıyasla</button>
@@ -305,8 +306,12 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
   <div id="c-result" style="display:none">
     <div class="tiles">
-      <div class="tile"><div class="k" id="c-ev-lbl">EV 100 km</div><div class="v" id="c-ev" style="color:var(--accent-dark)">—</div></div>
+      <div class="tile"><div class="k" id="c-ev-lbl">EV 100 km (net)</div><div class="v" id="c-ev" style="color:var(--accent-dark)">—</div></div>
       <div class="tile"><div class="k" id="c-ice-lbl">Yakıtlı 100 km</div><div class="v" id="c-ice" style="color:var(--red)">—</div></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="k" id="c-evg-lbl">EV 100 km (indirimsiz)</div><div class="v" id="c-ev-g">—</div></div>
+      <div class="tile"><div class="k" data-i18n="discEffect">İndirim etkisi</div><div class="v" id="c-disc-fx" style="color:var(--accent-dark)">—</div></div>
     </div>
     <div class="hero" style="margin-top:2px">
       <div class="k" data-i18n="perUnitSaving">Km başına kazanç</div>
@@ -315,7 +320,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
     </div>
     <div class="h2" data-i18n="savingByMonth">Aylara göre kazanç</div>
     <div class="monthbars" id="c-months"></div>
-    <div class="about" data-i18n="compareNote">Grafik, kayıtlı sürüş mesafelerine göre aynı yolu yakıtlı araçla gitseydin aradaki farkı gösterir.</div>
+    <div class="about" data-i18n="compareNote">Grafik, kayıtlardaki sürüş mesafesine göre aynı yolu yakıtlı araçla gitseydin aradaki farkı gösterir.</div>
   </div>
 </section>
 
@@ -340,13 +345,13 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   <div class="section-lbl" data-i18n="vehicles">Araçlarım</div>
   <ul class="vlist" id="set-vehicles"></ul>
   <button class="mini-btn" id="btn-add-vehicle" data-i18n="addVehicle">+ Araç ekle</button>
-  <div class="about" style="margin-top:8px" data-i18n="defaultHint">Yıldıza dokunarak varsayılan aracı seç. Formda 2+ araç varsa seçim görünür.</div>
+  <div class="about" style="margin-top:8px" data-i18n="defaultHint">Yıldıza dokunarak varsayılan aracı seç. Araca dokunarak fotoğraf ekle.</div>
 
   <div class="section-lbl" data-i18n="formSection">Kayıt Formu</div>
   <div class="switchrow" style="margin-bottom:20px">
     <div>
       <div class="t" data-i18n="advAlways">Gelişmiş alanlar hep açık</div>
-      <div class="d" data-i18n="advAlwaysD">Süre, lokasyon ve şarj aralığı formda açık gelsin</div>
+      <div class="d" data-i18n="advAlwaysD">Banka, süre, lokasyon ve şarj aralığı formda açık gelsin</div>
     </div>
     <label class="sw"><input type="checkbox" id="set-adv"><i></i></label>
   </div>
@@ -359,7 +364,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   <button class="setting-btn danger" id="btn-wipe" data-i18n="reset" style="margin-bottom:22px">Verileri Sıfırla</button>
 
   <div class="section-lbl" data-i18n="about">Hakkında</div>
-  <div class="about" data-i18n="aboutText">WattTrack — tüm verileriniz yalnızca bu cihazda saklanır. Herhangi bir sunucuya gönderilmez.</div>
+  <div class="about" data-i18n="aboutText">WattTrack — tüm verileriniz yalnızca bu cihazda saklanır.</div>
 </section>
 
 </div>
@@ -385,6 +390,12 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
       </div>
     </div>
 
+    <div id="wrap-rate" style="display:none">
+      <div class="lbl" id="rate-lbl">Kur</div>
+      <input type="text" inputmode="decimal" id="in-rate" placeholder="—">
+      <div class="about" style="margin:6px 0 0;font-size:11.5px" id="rate-note"></div>
+    </div>
+
     <div>
       <div class="lbl" data-i18n="chargeType">Şarj Tipi</div>
       <div class="seg" id="in-tip">
@@ -395,15 +406,18 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
     <div>
       <div class="lbl" data-i18n="company">Ev ya da Şarj Firması</div>
-      <input type="text" id="in-firm" placeholder="ör. Trugo" list="firm-list" autocomplete="off">
-      <datalist id="firm-list"></datalist>
-      <div class="chips" id="firm-chips"></div>
+      <select id="in-firm"></select>
+      <input type="text" id="in-firm-other" style="display:none;margin-top:8px" placeholder="">
     </div>
 
     <div class="row2">
       <div>
         <div class="lbl" data-i18n="kwh">Enerji (kWh)</div>
-        <input type="number" id="in-kwh" inputmode="decimal" step="0.01" min="0" placeholder="0">
+        <div class="kwh-split">
+          <input type="number" id="in-kwh-int" inputmode="numeric" min="0" max="500" placeholder="45">
+          <span class="comma">,</span>
+          <input type="number" id="in-kwh-dec" inputmode="numeric" min="0" max="99" placeholder="47">
+        </div>
       </div>
       <div>
         <div class="lbl" id="in-dist-lbl">Sürülen mesafe (km)</div>
@@ -421,7 +435,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
     <div id="wrap-paid">
       <div class="lbl" id="in-amount-lbl">Ödenen Tutar</div>
-      <input type="number" id="in-amount" inputmode="decimal" step="0.01" min="0" placeholder="0">
+      <input type="text" inputmode="decimal" id="in-amount" placeholder="0,00">
     </div>
 
     <div id="wrap-disc">
@@ -430,13 +444,8 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
         <button data-v="amount" class="sel" data-i18n="amountType">Tutar</button>
         <button data-v="percent" data-i18n="percentType">Yüzde (%)</button>
       </div>
-      <input type="number" id="in-disc-val" inputmode="decimal" step="0.01" min="0" placeholder="0">
+      <input type="text" inputmode="decimal" id="in-disc-val" placeholder="0">
       <div class="chips" id="disc-chips"></div>
-    </div>
-
-    <div id="wrap-bank" style="display:none">
-      <div class="lbl" data-i18n="bank">Banka / Kampanya</div>
-      <select id="in-bank"></select>
     </div>
 
     <div id="wrap-vehicle" style="display:none">
@@ -446,22 +455,34 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
     <button class="details-toggle" id="btn-adv" type="button">+ Gelişmiş</button>
     <div id="adv-fields">
-      <div class="row2">
-        <div>
-          <div class="lbl" data-i18n="duration">Şarj süresi (dk)</div>
-          <input type="number" id="in-dur" inputmode="numeric" min="0" placeholder="35">
+      <div id="wrap-bank">
+        <div class="lbl" data-i18n="bank">Banka / Kampanya</div>
+        <select id="in-bank"></select>
+      </div>
+      <div>
+        <div class="lbl" data-i18n="duration">Şarj süresi</div>
+        <div class="row2">
+          <input type="number" id="in-dur-h" inputmode="numeric" min="0" max="48" placeholder="0">
+          <input type="number" id="in-dur-m" inputmode="numeric" min="0" max="59" placeholder="35">
         </div>
-        <div>
-          <div class="lbl" data-i18n="location">Lokasyon</div>
-          <input type="text" id="in-loc" placeholder="Ankara">
+        <div class="row2" style="margin-top:4px">
+          <div class="lbl" style="text-align:center" data-i18n="hours">saat</div>
+          <div class="lbl" style="text-align:center" data-i18n="minutes">dakika</div>
         </div>
       </div>
       <div>
+        <div class="lbl" data-i18n="location">Lokasyon</div>
+        <div class="loc-row">
+          <input type="text" id="in-loc" placeholder="Ankara" list="loc-list" autocomplete="off">
+          <button class="gps-btn" id="btn-gps" type="button" title="GPS">📍</button>
+        </div>
+        <datalist id="loc-list"></datalist>
+      </div>
+      <div>
         <div class="lbl" data-i18n="socRange">Şarj aralığı (%)</div>
-        <div class="socbar">
-          <input type="range" id="in-socb" min="0" max="100" step="5" value="20">
-          <div class="socval" id="soc-val">20 → 80</div>
-          <input type="range" id="in-soca" min="0" max="100" step="5" value="80">
+        <div class="row2">
+          <input type="number" id="in-socb" inputmode="numeric" min="0" max="100" placeholder="20">
+          <input type="number" id="in-soca" inputmode="numeric" min="0" max="100" placeholder="80">
         </div>
         <div class="chips" id="soc-chips"></div>
       </div>
@@ -487,9 +508,9 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
     <div id="ob-step1">
       <div class="ob-title" data-i18n="obWelcome">Hoş geldin!</div>
       <div class="ob-sub" data-i18n="obCountryQ">Hangi ülkede şarj oluyorsun? Para birimi ve mesafe birimini buna göre ayarlayalım.</div>
-      <input type="text" id="ob-search" placeholder="Ülke ara…" style="margin-bottom:12px">
-      <div class="country-list" id="ob-countries"></div>
-      <div class="row2" style="margin-top:16px">
+      <div class="lbl" data-i18n="country">Ülke</div>
+      <select id="ob-country" style="margin-bottom:14px"></select>
+      <div class="row2">
         <div>
           <div class="lbl" data-i18n="currency">Para Birimi</div>
           <select id="ob-currency"></select>
@@ -502,13 +523,15 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
           </div>
         </div>
       </div>
-      <button class="save-btn" id="ob-next" style="margin-top:18px" data-i18n="continue">Devam</button>
+      <div class="lbl" style="margin-top:14px" data-i18n="language">Dil</div>
+      <select id="ob-lang"></select>
+      <button class="save-btn" id="ob-next" style="margin-top:20px" data-i18n="continue">Devam</button>
     </div>
 
     <div id="ob-step2" style="display:none">
       <div class="ob-title" data-i18n="obCarQ">Aracını seç</div>
       <div class="ob-sub" data-i18n="obCarSub">Marka veya model yaz — yıl ve donanıma göre farklı batarya sürümlerini ayırt edebilirsin.</div>
-      <input type="text" id="ob-ev-search" placeholder="ör. Model Y, Togg, ID.4…" style="margin-bottom:12px">
+      <input type="text" id="ob-ev-search" placeholder="ör. Model Y, Togg, Torres…" style="margin-bottom:12px">
       <div class="rows" id="ob-ev-results"></div>
       <div id="ob-ev-summary" style="display:none;margin-top:14px"></div>
       <div class="row2" style="margin-top:16px">
@@ -533,17 +556,18 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   </div>
 </section>
 
-<!-- ============ ARAÇ EKLE ============ -->
+<!-- ============ ARAÇ EKLE / DÜZENLE ============ -->
 <section class="overlay" id="page-addcar">
   <div class="ov-head">
     <button class="close" id="btn-close-addcar">×</button>
-    <div class="title" data-i18n="addVehicle">+ Araç ekle</div>
+    <div class="title" id="addcar-title" data-i18n="addVehicle">+ Araç ekle</div>
     <div style="width:32px"></div>
   </div>
   <div class="ov-body">
-    <input type="text" id="car-search" placeholder="ör. EV6, Enyaq…">
+    <input type="text" id="car-search" placeholder="ör. EV6, Torres…">
     <div class="rows" id="car-results"></div>
     <div id="car-summary" style="display:none"></div>
+    <input type="file" id="car-photo" accept="image/*" style="display:none">
     <button class="save-btn" id="car-save" disabled data-i18n="add">Ekle</button>
   </div>
 </section>
