@@ -57,6 +57,23 @@ settings: key, value   (şimdilik: budget)
 CSV çıktısı Türkçe Excel uyumludur (UTF-8 BOM, `;` ayraç, ondalık virgül) —
 doğrudan Power BI'a da bağlanabilir.
 
+## Sürüm notu (v8)
+
+1. Service worker kaydı window load sarmalayıcısına alındı (en iyi pratik)
+2. Erişilebilirlik: tüm select alanlarına aria-label; soluk metin renkleri
+   WCAG AA kontrastına koyulaştırıldı (Lighthouse accessibility artışı)
+3. "L0" ve "{u}" hataları giderildi: harf sembollü para birimleri
+   (ALL=Arnavutluk Leki, kr, Ft…) artık "1.250 L" biçiminde; kıyas
+   etiketlerindeki {u} yer tutucusu birimle dolduruluyor
+4. PWABuilder için manifest zenginleştirildi: id, scope, display_override,
+   categories, screenshots (dar+geniş), shortcuts (Yeni Kayıt / Geçmiş),
+   launch_handler — kısayol URL'leri uygulama içinde işleniyor
+5. KOYU MOD: Ayarlar → Görünüm (Açık/Koyu); sarj_app paletiyle
+   (#0f172a zemin, #1e293b kart, #16a34a yeşil, #3b82f6 mavi)
+6. Alt menü ikonları emoji oldu (📊 📋 🆚 ⚙️), seçili sekme renklenir
+7. screenshot-narrow.png ve screenshot-wide.png dosyaları eklendi
+   (manifest ekran görüntüleri — repoya yüklemeyi unutma)
+
 ## Sürüm notu (v7)
 
 1. Araç ARŞİVİ: kayıtları olan araç silinince artık kayıtlar kaybolmuyor —

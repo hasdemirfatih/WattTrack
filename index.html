@@ -16,12 +16,27 @@
 <style>
 :root{
   --bg:#F1F7F2; --card:#FFFFFF; --text:#131714; --muted:#5F6560;
-  --muted2:#6E736E; --faint:#8B918C; --accent:#1C8742; --accent-dark:#00682A;
+  --muted2:#5C625D; --faint:#666C67; --accent:#1C8742; --accent-dark:#00682A;
   --accent-text:#115629; --chip:#D7EBDA; --pill:#C9F1D0; --border:#D5D8D6;
   --track:#E3EAE4; --circle:#EAF0EB; --red:#C53637; --blue:#007DAA;
   --shadow:0 1px 3px rgba(0,0,0,.06); --shadow-big:0 8px 20px rgba(0,0,0,.15);
 }
-*{box-sizing:border-box;margin:0;padding:0}
+[data-theme="dark"]{
+  --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8;
+  --muted2:#94a3b8; --faint:#8ea0b5; --accent:#16a34a; --accent-dark:#22c55e;
+  --accent-text:#86efac; --chip:#14532d; --pill:#14532d; --border:#334155;
+  --track:#334155; --circle:#0a1628; --red:#ef4444; --blue:#3b82f6;
+  --shadow:0 1px 3px rgba(0,0,0,.4); --shadow-big:0 8px 20px rgba(0,0,0,.5);
+}
+[data-theme="dark"] .hero{background:linear-gradient(150deg,#1e293b 30%,#16223a 100%)}
+[data-theme="dark"] input,[data-theme="dark"] select{background:#0a1628}
+[data-theme="dark"] .spec{background:#0a1628}
+[data-theme="dark"] .mb .bar{background:linear-gradient(180deg,#22c55e,#15803d)}
+[data-theme="dark"] nav{border-top-color:#334155}
+[data-theme="dark"] .gps-btn{background:#14532d;color:#86efac}
+[data-theme="dark"] .toast{background:#334155}
+[data-theme="dark"] .ev-summary svg [fill="#F1F7F2"]{fill:#1e293b}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
@@ -201,6 +216,8 @@ nav{position:fixed;bottom:0;left:0;right:0;z-index:10;max-width:520px;margin:0 a
   background:var(--card);border-top:1px solid #DCDFDC}
 nav button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:500;color:var(--faint);flex:1}
 nav button svg{width:22px;height:22px;stroke-width:1.8;stroke:currentColor;fill:none}
+nav button span{filter:grayscale(1);opacity:.55}
+nav button.sel span{filter:none;opacity:1}
 nav button.sel{color:var(--accent)}
 nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--accent);
   display:flex;align-items:center;justify-content:center;
@@ -233,7 +250,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
       <img src="logo.png" alt="" style="height:30px;width:auto">
       <div class="ob-title" style="font-size:17px"><span style="color:#6CB33F">Watt</span><span style="color:#1B5FAA">Track</span></div>
     </div>
-    <select id="d-vehsel" style="width:auto;max-width:50%;padding:7px 10px;font-size:12.5px;border-radius:10px"></select>
+    <select id="d-vehsel" aria-label="Araç filtresi" style="width:auto;max-width:50%;padding:7px 10px;font-size:12.5px;border-radius:10px"></select>
   </div>
 
   <div class="seg mini" id="d-period" style="margin-bottom:12px">
@@ -315,12 +332,12 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 <section class="page" id="page-history">
   <div class="page-title" data-i18n="historyTitle">Geçmiş</div>
   <div class="filters">
-    <select id="f-year"></select>
-    <select id="f-firm"></select>
-    <select id="f-type"></select>
-    <select id="f-veh" style="display:none"></select>
-    <select id="f-bank"></select>
-    <select id="f-loc"></select>
+    <select id="f-year" aria-label="Yıl filtresi"></select>
+    <select id="f-firm" aria-label="Firma filtresi"></select>
+    <select id="f-type" aria-label="Tip filtresi"></select>
+    <select id="f-veh" aria-label="Araç filtresi" style="display:none"></select>
+    <select id="f-bank" aria-label="Banka filtresi"></select>
+    <select id="f-loc" aria-label="Lokasyon filtresi"></select>
   </div>
   <div id="h-groups"></div>
 </section>
@@ -332,7 +349,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
   <div class="card">
     <div id="wrap-c-veh" style="display:none;margin-bottom:14px">
       <div class="lbl" data-i18n="vehicle">Araç</div>
-      <select id="c-vehsel"></select>
+      <select id="c-vehsel" aria-label="Araç filtresi"></select>
     </div>
     <div class="lbl" data-i18n="fuelType">Diğer aracın yakıt tipi</div>
     <div class="seg mini" id="c-fuel" style="margin-bottom:6px">
@@ -362,10 +379,10 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
     </div>
     <div class="tiles">
       <div class="tile"><div class="k" id="c-evg-lbl">EV 100 km (indirimsiz)</div><div class="v" id="c-ev-g">—</div></div>
-      <div class="tile"><div class="k" data-i18n="discEffect">İndirim etkisi</div><div class="v" id="c-disc-fx" style="color:var(--accent-dark)">—</div></div>
+      <div class="tile"><div class="k" id="c-discfx-lbl">İndirim etkisi</div><div class="v" id="c-disc-fx" style="color:var(--accent-dark)">—</div></div>
     </div>
     <div class="hero" style="margin-top:2px">
-      <div class="k" data-i18n="perUnitSaving">Km başına kazanç</div>
+      <div class="k" id="c-perkm-lbl">Km başına kazanç</div>
       <div class="v" id="c-perkm" style="font-size:28px">—</div>
       <div class="pill" id="c-per100">—</div>
     </div>
@@ -401,14 +418,19 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
     <span data-i18n="country">Ülke</span><span id="set-country-val" style="color:var(--muted)"></span>
   </button>
   <div class="lbl" style="margin-top:6px" data-i18n="currency">Para Birimi</div>
-  <select id="set-currency" style="margin-bottom:12px"></select>
+  <select id="set-currency" aria-label="Para birimi" style="margin-bottom:12px"></select>
   <div class="lbl" data-i18n="unit">Mesafe Birimi</div>
   <div class="seg" id="set-unit" style="margin-bottom:12px">
     <button data-v="km">km</button>
     <button data-v="mi">mi</button>
   </div>
   <div class="lbl" data-i18n="language">Dil</div>
-  <select id="set-lang" style="margin-bottom:20px"></select>
+  <select id="set-lang" aria-label="Dil" style="margin-bottom:12px"></select>
+  <div class="lbl" data-i18n="theme">Görünüm</div>
+  <div class="seg" id="set-theme" style="margin-bottom:20px">
+    <button data-v="light" data-i18n="themeLight">Açık</button>
+    <button data-v="dark" data-i18n="themeDark">Koyu</button>
+  </div>
 
   <div class="section-lbl" data-i18n="vehicles">Araçlarım</div>
   <ul class="vlist" id="set-vehicles"></ul>
@@ -461,7 +483,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
       </div>
       <div>
         <div class="lbl" data-i18n="country">Ülke</div>
-        <select id="in-country"></select>
+        <select id="in-country" aria-label="Ülke"></select>
       </div>
     </div>
 
@@ -481,7 +503,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
     <div>
       <div class="lbl" data-i18n="company">Ev ya da Şarj Firması</div>
-      <select id="in-firm"></select>
+      <select id="in-firm" aria-label="Şarj firması"></select>
       <input type="text" id="in-firm-other" style="display:none;margin-top:8px" placeholder="">
     </div>
 
@@ -526,14 +548,14 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
     <div id="wrap-vehicle" style="display:none">
       <div class="lbl" data-i18n="vehicle">Araç</div>
-      <select id="in-vehicle"></select>
+      <select id="in-vehicle" aria-label="Araç"></select>
     </div>
 
     <button class="details-toggle" id="btn-adv" type="button">+ Gelişmiş</button>
     <div id="adv-fields">
       <div id="wrap-bank">
         <div class="lbl" data-i18n="bank">Banka / Kampanya</div>
-        <select id="in-bank"></select>
+        <select id="in-bank" aria-label="Banka"></select>
       </div>
       <div>
         <div class="lbl" data-i18n="duration">Şarj süresi</div>
@@ -586,11 +608,11 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
       <div class="ob-title" data-i18n="obWelcome">Hoş geldin!</div>
       <div class="ob-sub" data-i18n="obCountryQ">Hangi ülkede şarj oluyorsun? Para birimi ve mesafe birimini buna göre ayarlayalım.</div>
       <div class="lbl" data-i18n="country">Ülke</div>
-      <select id="ob-country" style="margin-bottom:14px"></select>
+      <select id="ob-country" aria-label="Ülke" style="margin-bottom:14px"></select>
       <div class="row2">
         <div>
           <div class="lbl" data-i18n="currency">Para Birimi</div>
-          <select id="ob-currency"></select>
+          <select id="ob-currency" aria-label="Para birimi"></select>
         </div>
         <div>
           <div class="lbl" data-i18n="unit">Mesafe</div>
@@ -601,7 +623,7 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
         </div>
       </div>
       <div class="lbl" style="margin-top:14px" data-i18n="language">Dil</div>
-      <select id="ob-lang"></select>
+      <select id="ob-lang" aria-label="Dil"></select>
       <button class="save-btn" id="ob-next" style="margin-top:20px" data-i18n="continue">Devam</button>
     </div>
 
@@ -651,22 +673,22 @@ nav .plus svg{width:24px;height:24px;stroke:#fff;stroke-width:2.6;stroke-linecap
 
 <nav>
   <button data-page="dashboard" class="sel">
-    <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"/></svg>
+    <span style="font-size:19px">📊</span>
     <span data-i18n="navHome">Ana Sayfa</span>
   </button>
   <button data-page="history">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+    <span style="font-size:19px">📋</span>
     <span data-i18n="navHistory">Geçmiş</span>
   </button>
   <button class="plus" id="nav-plus" aria-label="+">
     <div><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
   </button>
   <button data-page="compare">
-    <svg viewBox="0 0 24 24"><path d="M8 3v18M16 3v18M3 8h5M16 8h5M3 16h5M16 16h5"/></svg>
+    <span style="font-size:19px">🆚</span>
     <span data-i18n="navCompare">Kıyasla</span>
   </button>
   <button data-page="settings">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 00.3 1.7l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-1.7-.3 1.6 1.6 0 00-1 1.5V21a2 2 0 11-4 0v-.2a1.6 1.6 0 00-1-1.5 1.6 1.6 0 00-1.7.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.6 1.6 0 00.3-1.7 1.6 1.6 0 00-1.5-1H3a2 2 0 110-4h.2a1.6 1.6 0 001.5-1 1.6 1.6 0 00-.3-1.7l-.1-.1a2 2 0 112.8-2.8l.1.1a1.6 1.6 0 001.7.3h.1a1.6 1.6 0 001-1.5V3a2 2 0 114 0v.2a1.6 1.6 0 001 1.5h.1a1.6 1.6 0 001.7-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.6 1.6 0 00-.3 1.7v.1a1.6 1.6 0 001.5 1h.2a2 2 0 110 4h-.2a1.6 1.6 0 00-1.5 1z"/></svg>
+    <span style="font-size:19px">⚙️</span>
     <span data-i18n="navSettings">Ayarlar</span>
   </button>
 </nav>
