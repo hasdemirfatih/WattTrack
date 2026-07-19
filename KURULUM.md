@@ -3,7 +3,7 @@
 Yayına çıkarken bu listeyi aç — sohbette "Play listesine bakalım" demen yeterli.
 
 [ ] 1. GİZLİLİK: Play Console > Store listing > Privacy policy alanına:
-       https://KULLANICIADIN.github.io/WattTrack/privacy.html
+       https://rino-06.github.io/WattTrack/privacy.html
 [ ] 2. DATA SAFETY formu: "Veri toplanmıyor / paylaşılmıyor" işaretle.
        Konum: "isteğe bağlı (opsiyonel), yalnız cihazda işlenir, paylaşılmaz,
        toplanmaz" — çünkü koordinat yalnız harici servise anlık sorgu için

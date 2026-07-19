@@ -13,8 +13,8 @@ db.version(1).stores({
 
 const AVATAR_COLORS = ['#1C8742', '#007DAA', '#C87B00', '#A54C8B', '#C25C5F'];
 const MI = 1.60934;
-const APP_VERSION = 'v14';
-const APP_DATE = '18.07.2026';
+const APP_VERSION = 'v15';
+const APP_DATE = '19.07.2026';
 
 // ---------- Çeviriler ----------
 const T = {
@@ -1958,7 +1958,7 @@ $('btn-rate').addEventListener('click', () => {
   window.open('https://play.google.com/store/apps/details?id=app.watttrack.twa', '_blank', 'noopener');
 });
 $('btn-support').addEventListener('click', () => {
-  window.open('https://github.com/hasdemirfatih/WattTrack', '_blank', 'noopener');
+  window.open('https://github.com/Rino-06/WattTrack', '_blank', 'noopener');
 });
 $('btn-wipe').addEventListener('click', async () => {
   if (!confirm(t('wipeAsk1')) || !confirm(t('wipeAsk2'))) return;
