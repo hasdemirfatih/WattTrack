@@ -82,6 +82,29 @@ input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px}
 .toplist .tn{flex:1;font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .toplist .ts{font-size:11.5px;color:var(--muted2)}
 .toplist .tv{font-weight:700;flex-shrink:0}
+.side2{display:flex;gap:10px;align-items:stretch;margin-bottom:6px}
+.side2>div{flex:1;min-width:0}
+.compactfirm{gap:8px}
+.compactfirm .cmp{padding:10px}
+.compactfirm .cmp-head{gap:7px;margin-bottom:7px}
+.compactfirm .cmp-head .avatar{width:24px;height:24px;font-size:11px;border-radius:7px}
+.compactfirm .cmp-head .name{font-size:12px}
+.compactfirm .cmp-head .sub{display:none}
+.compactfirm .cmp-head .total{font-size:12px}
+.donut-col{flex-direction:column;height:calc(100% - 26px);justify-content:center}
+.donut-col svg{width:84px;height:84px}
+.donut-col .legend{width:100%;font-size:11.5px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.page.active .hero,.page.active .tiles,.page.active .card,.page.active .monthbars,
+.page.active .donut-wrap,.page.active .toplist,.page.active .side2,.page.active .dstat,
+.page.active .chart-card,.page.active .rows{animation:fadeUp .35s ease both}
+@keyframes barGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.mb .bar{transform-origin:bottom;animation:barGrow .5s ease both}
+@keyframes donutIn{from{opacity:0;transform:rotate(-40deg) scale(.85)}to{opacity:1;transform:none}}
+#d-donut{animation:donutIn .55s ease both;transform-origin:center}
+@keyframes dashIn{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.chart-card path{stroke-dasharray:1;animation:dashIn 1s ease .1s both}
+.chart-card circle{opacity:0;animation:fadeUp .3s ease .8s both}
 .chart-card{background:var(--card);border-radius:16px;padding:14px;box-shadow:var(--shadow);margin-bottom:14px}
 .chart-card svg{width:100%;height:170px;display:block}
 .vlist .cam{width:30px;height:30px;border-radius:8px;background:var(--chip);color:var(--accent-text);font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -283,6 +306,10 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
     <div class="tile"><div class="k"><span data-i18n="avgPerKwh">kWh başı</span> · <span data-i18n="grossLbl">indirimsiz</span></div><div class="v" id="d-avg-g">—</div></div>
   </div>
   <div class="tiles">
+    <div class="tile"><div class="k"><span id="d-1km-lbl">1 km</span> · <span data-i18n="netLbl">net</span></div><div class="v" id="d-1km">—</div></div>
+    <div class="tile"><div class="k"><span id="d-1km-lbl2">1 km</span> · <span data-i18n="grossLbl">indirimsiz</span></div><div class="v" id="d-1km-g">—</div></div>
+  </div>
+  <div class="tiles">
     <div class="tile"><div class="k"><span id="d-100-lbl">100 km</span> · <span data-i18n="netLbl">net</span></div><div class="v" id="d-100">—</div></div>
     <div class="tile"><div class="k"><span id="d-100-lbl2">100 km</span> · <span data-i18n="grossLbl">indirimsiz</span></div><div class="v" id="d-100-g">—</div></div>
   </div>
@@ -293,25 +320,6 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
   <div class="tiles" style="margin-bottom:20px">
     <div class="tile"><div class="k" data-i18n="totalDiscP">Alınan indirim</div><div class="v" id="d-disc" style="color:var(--accent-dark)">0</div></div>
     <div class="tile"><div class="k" data-i18n="freeCount">Ücretsiz şarj</div><div class="v" id="d-free" style="color:var(--blue)">0</div></div>
-  </div>
-
-  <div class="h2row" style="margin-top:0">
-    <div class="h2" data-i18n="spendChart">Harcama grafiği</div>
-    <div class="seg mini" id="d-gran" style="width:170px">
-      <button data-v="week" data-i18n="week">Hafta</button>
-      <button data-v="month" class="sel" data-i18n="month">Ay</button>
-      <button data-v="year" data-i18n="year">Yıl</button>
-    </div>
-  </div>
-  <div class="monthbars" id="d-months"></div>
-
-  <div class="h2" data-i18n="firmDist">Firma dağılımı</div>
-  <div class="rows" style="gap:12px;margin-bottom:20px" id="d-firms"></div>
-
-  <div class="h2" data-i18n="typeSplit">Şarj tipi dağılımı</div>
-  <div class="donut-wrap">
-    <svg viewBox="0 0 42 42" id="d-donut"></svg>
-    <div class="legend" id="d-donut-legend"></div>
   </div>
 
   <div id="d-odo-wrap" style="display:none">
@@ -334,6 +342,31 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
     <div class="tile"><div class="k" data-i18n="avgDuration">Ort. şarj süresi</div><div class="v" id="d-dur">—</div></div>
     <div class="tile"><div class="k" data-i18n="avgSocRange">Ort. şarj aralığı</div><div class="v" id="d-soc">—</div></div>
   </div>
+
+  <div class="h2row" style="margin-top:0">
+    <div class="h2" data-i18n="spendChart">Harcama grafiği</div>
+    <div class="seg mini" id="d-gran" style="width:170px">
+      <button data-v="week" data-i18n="week">Hafta</button>
+      <button data-v="month" class="sel" data-i18n="month">Ay</button>
+      <button data-v="year" data-i18n="year">Yıl</button>
+    </div>
+  </div>
+  <div class="monthbars" id="d-months"></div>
+
+  <div class="side2">
+    <div>
+      <div class="h2" data-i18n="firmDist">Firma dağılımı</div>
+      <div class="rows compactfirm" id="d-firms"></div>
+    </div>
+    <div>
+      <div class="h2" data-i18n="typeSplit">Şarj tipi dağılımı</div>
+      <div class="donut-wrap donut-col">
+        <svg viewBox="0 0 42 42" id="d-donut"></svg>
+        <div class="legend" id="d-donut-legend"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="h2" data-i18n="topBanks">Bankalar (indirim kazancı)</div>
   <div class="toplist" id="d-banks"></div>
   <div class="h2" data-i18n="topLocations">En çok şarj edilen lokasyonlar</div>
@@ -391,6 +424,10 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
   </div>
 
   <div id="c-result" style="display:none">
+    <div class="tiles">
+      <div class="tile"><div class="k" id="c-1km-lbl">EV 1 km (net)</div><div class="v" id="c-1km" style="color:var(--accent-dark)">—</div></div>
+      <div class="tile"><div class="k" id="c-1km-g-lbl">EV 1 km (indirimsiz)</div><div class="v" id="c-1km-g">—</div></div>
+    </div>
     <div class="tiles">
       <div class="tile"><div class="k" id="c-ev-lbl">EV 100 km (net)</div><div class="v" id="c-ev" style="color:var(--accent-dark)">—</div></div>
       <div class="tile"><div class="k" id="c-ice-lbl">Yakıtlı 100 km</div><div class="v" id="c-ice" style="color:var(--red)">—</div></div>

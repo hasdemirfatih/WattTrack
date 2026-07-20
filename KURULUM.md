@@ -84,6 +84,19 @@ settings: key, value   (şimdilik: budget)
 CSV çıktısı Türkçe Excel uyumludur (UTF-8 BOM, `;` ayraç, ondalık virgül) —
 doğrudan Power BI'a da bağlanabilir.
 
+## Sürüm notu (v16)
+
+1. Ana sayfa düzeni: Kilometre sayacı + Detay istatistikler, harcama
+   grafiğinin üstüne taşındı
+2. Yeni 1 km maliyet kutuları (net + indirimsiz) — ana sayfada kWh
+   satırının altında, Kıyasla'da 100 km kutularının üstünde
+3. Firma dağılımı ile şarj tipi donutu yan yana kompakt kutulara alındı
+4. Yükleme animasyonları: kartlar aşağıdan belirir, barlar büyüyerek,
+   donut dönerek, kıyas çizgileri çizilerek gelir
+Not: Kıyasla'da fiyat/tüketim değişince yalnız YAKITLI tarafı değişir;
+EV net/indirimsiz değerleri kayıtlarından gelir, yakıt fiyatından
+bağımsızdır (5. maddedeki gözlemin hata değil, tasarım gereğidir).
+
 ## Sürüm notu (v14)
 
 1. SAYAÇ OTOMATİK: formdan girilen her kayıttaki sürülen mesafe aracın
