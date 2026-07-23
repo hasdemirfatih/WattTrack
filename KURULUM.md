@@ -84,6 +84,24 @@ settings: key, value   (şimdilik: budget)
 CSV çıktısı Türkçe Excel uyumludur (UTF-8 BOM, `;` ayraç, ondalık virgül) —
 doğrudan Power BI'a da bağlanabilir.
 
+## Sürüm notu (v17)
+
+1. ARAÇ GİDERLERİ: Kıyasla sayfasından vergi (MTV), sigorta/kasko, bakım,
+   lastik, muayene, onarım, otopark/otoyol, ekipman ve diğer kalemleri
+   ekleyebilirsin (tarih, tutar, para birimi, araç, not). Yeni "expenses"
+   tablosu; yedeklerde de yer alır, mükerrer koruması vardır.
+2. TOPLAM SAHİP OLMA MALİYETİ (TCO): şarj + giderler; EV toplamı,
+   gider dahil 1 km maliyeti, yakıtlı aracın gider dahil toplamı ve gider
+   dahil kazanç. Yakıtlı araç için "yıllık sabit gider" alanı eklendi
+   (dönem uzunluğuna oranlanır). Adil kıyas için "yıllık giderleri döneme
+   oranla" seçeneği (vergi/sigorta) varsayılan olarak açık.
+3. GENİŞ EKRAN DESTEĞİ: 760px üstünde telefon çerçevesi yerine gerçek
+   responsive yerleşim — 2 sütun (Tesla ekranı ~1200px), 1240px üstünde
+   ana sayfa 3 sütun; alt menü ortalanmış hap biçiminde; formlar ortalı
+   pencere olarak açılır. Geçmiş/Ayarlar okunabilirlik için 820-900px
+   genişlikte ortalanır.
+4. Negatif tutarlar artık "−₺586" biçiminde düzgün gösteriliyor.
+
 ## Sürüm notu (v16)
 
 1. Ana sayfa düzeni: Kilometre sayacı + Detay istatistikler, harcama

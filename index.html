@@ -250,15 +250,39 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
 .toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(8px);background:var(--text);color:#fff;padding:10px 18px;border-radius:100px;font-size:13.5px;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:60;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-@media(min-width:600px){
-  body{background:#E9E6DE;display:flex;align-items:center;justify-content:center;padding:40px 20px;min-height:100vh}
-  .app{width:402px;height:844px;min-height:844px;flex:none;background:var(--bg);border-radius:44px;overflow:hidden;position:relative;
-    box-shadow:0 0 0 11px #1B1B1E,0 0 0 13px #3B3B3F,0 30px 70px rgba(0,0,0,.30)}
-  .content{padding-top:34px}
-  nav{position:absolute;max-width:none;padding-bottom:14px}
-  .overlay{position:absolute;inset:0;max-width:none;border-radius:44px}
-  .ov-head{padding-top:30px}
-  .toast{position:absolute;bottom:100px}
+/* ---- Tablet / araç ekranı / masaüstü ---- */
+@media(min-width:760px){
+  .app{max-width:1200px}
+  .content{padding:26px 30px 130px}
+  .page-title{font-size:24px}
+  nav{left:50%;right:auto;transform:translateX(-50%);max-width:560px;width:min(560px,92vw);
+    bottom:calc(16px + env(safe-area-inset-bottom));border-radius:24px;border:1px solid var(--border);
+    box-shadow:0 12px 34px rgba(0,0,0,.16);padding:6px 10px 8px}
+  nav .plus>div{margin-top:-26px}
+  .overlay{top:22px;bottom:22px;left:50%;right:auto;transform:translateX(-50%);
+    width:min(780px,94vw);max-width:none;border-radius:26px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.28);border:1px solid var(--border)}
+  .toast{bottom:110px}
+  /* iki sütunlu yerleşim: uzun sayfalar ekranı doldursun */
+  #page-dashboard,#page-compare{columns:2;column-gap:26px}
+  #page-dashboard>*,#page-compare>*{break-inside:avoid;-webkit-column-break-inside:avoid}
+  #page-dashboard>.h2row:first-child,#page-compare>.page-title,#page-dashboard>.seg{column-span:all}
+  .h2{break-after:avoid}
+  #page-history,#page-settings{max-width:820px;margin:0 auto}
+  .side2{display:block}
+  .side2>div+div{margin-top:14px}
+  .donut-col{flex-direction:row;height:auto}
+  .donut-col svg{width:110px;height:110px}
+}
+@media(min-width:1240px){
+  #page-dashboard{columns:3}
+  #page-history,#page-settings{max-width:900px}
+  .side2{display:flex}
+  .side2>div+div{margin-top:0}
+  .donut-col{flex-direction:column}
+}
+@media(min-width:760px) and (orientation:landscape){
+  .content{padding-bottom:120px}
 }
 </style>
 </head>
@@ -420,6 +444,15 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
         <input type="text" inputmode="decimal" id="c-cons" placeholder="6,5">
       </div>
     </div>
+    <div style="margin-bottom:14px">
+      <div class="lbl" id="c-icefix-lbl">Yakıtlı aracın yıllık sabit gideri (vergi + sigorta + bakım)</div>
+      <input type="text" inputmode="decimal" id="c-icefix" placeholder="0">
+      <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;cursor:pointer">
+        <input type="checkbox" id="c-prorate" checked style="width:16px;height:16px">
+        <span data-i18n="prorateLbl">Yıllık giderleri (vergi, sigorta) izlenen döneme oranla</span>
+      </label>
+      <div class="about" style="margin-top:5px;font-size:11px" data-i18n="iceFixHint">İsteğe bağlı. Benzer bir yakıtlı aracın yıllık vergi, sigorta/kasko ve bakım toplamını yaz — adil kıyas için kendi giderlerinle karşılaştırılır.</div>
+    </div>
     <button class="save-btn" id="c-calc" style="box-shadow:none" data-i18n="calc">Kıyasla</button>
   </div>
 
@@ -457,6 +490,32 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
         <div class="li"><span class="dot" style="background:var(--accent)"></span><span data-i18n="evLine">EV (gerçek)</span></div>
         <div class="li"><span class="dot" style="background:var(--blue)"></span><span data-i18n="iceLine">Yakıtlı (aynı km)</span></div>
       </div>
+    </div>
+
+    <div class="h2" data-i18n="tcoTitle">Toplam sahip olma maliyeti (şarj + giderler)</div>
+    <div class="tiles">
+      <div class="tile"><div class="k" data-i18n="expTotal">Giderler toplamı</div><div class="v" id="c-exptot">—</div></div>
+      <div class="tile"><div class="k" data-i18n="tcoEv">EV toplam (şarj + gider)</div><div class="v" id="c-tcoev" style="color:var(--accent-dark)">—</div></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="k" id="c-tco1km-lbl">EV 1 km (gider dahil)</div><div class="v" id="c-tco1km">—</div></div>
+      <div class="tile"><div class="k" data-i18n="tcoIce">Yakıtlı toplam (gider dahil)</div><div class="v" id="c-tcoice" style="color:var(--blue)">—</div></div>
+    </div>
+    <div class="hero" style="margin-top:2px">
+      <div class="k" data-i18n="tcoSaved">Gider dahil toplam kazanç</div>
+      <div class="v" id="c-tcosave" style="font-size:26px">—</div>
+      <div class="pill" id="c-tcopill">—</div>
+    </div>
+    <div class="about" id="c-tco-note" style="margin:-4px 0 14px;font-size:11.5px"></div>
+
+    <div class="h2row" style="margin-top:0">
+      <div class="h2" data-i18n="expenses">Araç giderleri</div>
+      <button class="mini-btn" id="btn-add-exp" style="margin:0">+ <span data-i18n="addExpense">Gider ekle</span></button>
+    </div>
+    <div class="rows" id="c-exp-list" style="margin-bottom:14px"></div>
+    <div id="c-exp-cats-wrap" style="display:none">
+      <div class="h2" data-i18n="expByCat">Gider dağılımı</div>
+      <div class="toplist" id="c-exp-cats"></div>
     </div>
 
     <div class="h2" data-i18n="savingByMonth">Aylara göre kazanç</div>
@@ -710,6 +769,44 @@ nav .plus>div{width:58px;height:58px;border-radius:50%;background:var(--card);
       <button class="save-btn" id="ob-back" style="margin-top:10px;background:transparent;color:var(--muted);box-shadow:none;border:1px solid var(--border)" data-i18n="back">← Geri</button>
     </div>
 
+  </div>
+</section>
+
+<!-- ============ GİDER FORMU ============ -->
+<section class="overlay" id="page-expense">
+  <div class="ov-head">
+    <button class="close" id="btn-close-exp">×</button>
+    <div class="title" id="exp-title" data-i18n="addExpense">Gider ekle</div>
+    <button class="close" id="btn-del-exp" style="color:var(--red);font-size:18px">🗑</button>
+  </div>
+  <div class="ov-body">
+    <div>
+      <div class="lbl" data-i18n="expType">Gider türü</div>
+      <select id="in-exp-type" aria-label="Gider türü"></select>
+    </div>
+    <div class="row2">
+      <div>
+        <div class="lbl" data-i18n="date">Tarih</div>
+        <input type="date" id="in-exp-date" aria-label="Tarih">
+      </div>
+      <div>
+        <div class="lbl" data-i18n="currency">Para birimi</div>
+        <select id="in-exp-cur" aria-label="Para birimi"></select>
+      </div>
+    </div>
+    <div>
+      <div class="lbl" id="in-exp-amt-lbl">Tutar</div>
+      <input type="text" inputmode="decimal" id="in-exp-amount" placeholder="0">
+    </div>
+    <div id="wrap-exp-veh" style="display:none">
+      <div class="lbl" data-i18n="vehicle">Araç</div>
+      <select id="in-exp-veh" aria-label="Araç"></select>
+    </div>
+    <div>
+      <div class="lbl" data-i18n="noteLbl">Not</div>
+      <input type="text" id="in-exp-note" maxlength="120" placeholder="">
+    </div>
+    <button class="save-btn" id="btn-save-exp" data-i18n="save">Kaydet</button>
   </div>
 </section>
 
